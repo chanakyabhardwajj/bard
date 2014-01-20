@@ -69,7 +69,8 @@ module.exports = function(passport) {
                         name: profile.displayName,
                         username: profile.username,
                         provider: 'twitter',
-                        twitter: profile._json
+                        twitter: profile._json,
+                        image_url : profile._json["profile_image_url"]
                     });
                     user.save(function(err) {
                         if (err) console.log(err);
@@ -101,7 +102,8 @@ module.exports = function(passport) {
                         email: profile.emails[0].value,
                         username: profile.username,
                         provider: 'facebook',
-                        facebook: profile._json
+                        facebook: profile._json,
+                        image_url : "http://graph.facebook.com/" + profile._json.id + "/picture?type=normal"
                     });
                     user.save(function(err) {
                         if (err) console.log(err);

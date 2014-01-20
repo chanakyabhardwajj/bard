@@ -4,14 +4,6 @@ module.exports = function(grunt) {
     // Project Configuration
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
-        shell: {
-            mongo: {
-                command: 'mongod',
-                options: {
-                    async: true
-                }
-            }
-        },
         watch: {
             styles: {
                 // Which files to watch (all .less files recursively in the less directory)
@@ -36,7 +28,7 @@ module.exports = function(grunt) {
                 }
             },
             html: {
-                files: ['public/views/**'],
+                files: ['public/partials/**'],
                 options: {
                     livereload: true
                 }
@@ -65,8 +57,8 @@ module.exports = function(grunt) {
         },
         nodemon: {
             dev: {
+                script : 'server.js',
                 options: {
-                    file: 'server.js',
                     args: [],
                     ignoredFiles: ['public/**'],
                     watchedExtensions: ['js'],
@@ -80,9 +72,11 @@ module.exports = function(grunt) {
             }
         },
         concurrent: {
-            tasks: ['nodemon', 'watch'],
-            options: {
-                logConcurrentOutput: true
+            target: {
+                tasks: ['watch','nodemon'],
+                options: {
+                    logConcurrentOutput: true
+                }
             }
         },
         mochaTest: {
@@ -104,7 +98,7 @@ module.exports = function(grunt) {
         }
     });
 
-    //Load NPM tasks 
+    //Load NPM tasks
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-mocha-test');
@@ -113,13 +107,12 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-concurrent');
     grunt.loadNpmTasks('grunt-env');
     grunt.loadNpmTasks('grunt-contrib-less');
-    grunt.loadNpmTasks('grunt-shell-spawn');
 
     //Making grunt default to force in order not to break the project.
     grunt.option('force', true);
 
     //Default task(s).
-    grunt.registerTask('default', ['shell', 'jshint', 'less', 'concurrent']);
+    grunt.registerTask('default', ['jshint', 'less', 'concurrent:target']);
 
     //Test task.
     grunt.registerTask('test', ['env:test', 'mochaTest', 'karma:unit']);

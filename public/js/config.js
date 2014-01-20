@@ -5,25 +5,25 @@ angular.module('penman').config(['$routeProvider',
     function($routeProvider) {
         $routeProvider.
         when('/myarticles', {
-            templateUrl: 'views/articles/list.html'
+            templateUrl: 'partials/all.html'
         }).
         when('/mydrafts', {
-            templateUrl: 'views/articles/list.html'
+            templateUrl: 'partials/all.html'
         }).
         when('/articles', {
-            templateUrl: 'views/articles/list.html'
+            templateUrl: 'partials/all.html'
         }).
         when('/articles/create', {
-            templateUrl: 'views/articles/create.html'
+            templateUrl: 'partials/new.html'
         }).
         when('/articles/:articleId/edit', {
-            templateUrl: 'views/articles/edit.html'
+            templateUrl: 'partials/edit.html'
         }).
         when('/articles/:articleId', {
-            templateUrl: 'views/articles/view.html'
+            templateUrl: 'partials/see.html'
         }).
         when('/', {
-            templateUrl: 'views/index.html'
+            templateUrl: 'partials/all.html'
         }).
         otherwise({
             redirectTo: '/'

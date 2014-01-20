@@ -22,6 +22,7 @@ var UserSchema = new Schema({
         type: String,
         unique: true
     },
+    image_url : String,
     hashed_password: String,
     provider: String,
     salt: String,

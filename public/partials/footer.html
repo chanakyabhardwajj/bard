@@ -1,0 +1,20 @@
+<div data-ng-controller="FooterController">
+    <a href="/">penman - a simple way to write</a>
+    <ul class="pull-right" data-ng-hide="global.authenticated">
+        <li class="footerSocialIcon"><a href="/auth/facebook"><i class="fa fa-facebook"></i></a></li>
+        <li class="footerSocialIcon"><a href="/auth/twitter"><i class="fa fa-twitter"></i></a></li>
+    </ul>
+    <ul class="pull-right" data-ng-show="global.authenticated">
+        <a href="#!/articles/create">Write</a>
+        <li class="dropdown">
+            <img src="{{global.user.image_url}}">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+				{{global.user.name}} <b class="caret"></b>
+			</a>
+            <ul class="dropdown-menu">
+                <li><a href="/signout">Signout</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>

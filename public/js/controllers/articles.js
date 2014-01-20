@@ -1,7 +1,11 @@
 'use strict';
 
-angular.module('penman.articles').controller('ArticlesController', ['$scope', '$routeParams', '$location', 'Global', 'Articles', function ($scope, $routeParams, $location, Global, Articles) {
+angular.module('penman.articles').controller('ArticlesController', ['$scope', '$routeParams', '$location', 'Flickr', 'Global', 'Articles', function ($scope, $routeParams, $location, Flickr, Global, Articles) {
     $scope.global = Global;
+
+    Flickr.fetch(function(obj){
+        $scope.flickrURL = obj.flickrURL;
+    });
 
     $scope.create = function() {
         var article = new Articles({
@@ -35,10 +39,8 @@ angular.module('penman.articles').controller('ArticlesController', ['$scope', '$
 
     $scope.update = function() {
         var article = $scope.article;
-        if (!article.updated) {
-            article.updated = [];
-        }
-        article.updated.push(new Date().getTime());
+
+        article.updated = new Date().getTime();
 
         article.$update(function() {
             $location.path('articles/' + article._id);

@@ -8,7 +8,6 @@ angular.module('penman.system').factory('Global', [
             user: window.user,
             authenticated: !! window.user
         };
-
         return _this._data;
     }
 ]);

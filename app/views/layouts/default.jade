@@ -2,8 +2,7 @@ doctype html
 html(lang='en', xmlns='http://www.w3.org/1999/xhtml', xmlns:fb='https://www.facebook.com/2008/fbml', itemscope='itemscope', itemtype='http://schema.org/Product')
   include ../includes/head
   body
-    section.content
-      section.container
+    div.content
         block content
-    .footerContainer(data-ng-include="'views/footer.html'", data-role="navigation")
-    include ../includes/foot
+    .footerContainer(data-ng-include="'partials/footer.html'", data-role="navigation")
+  include ../includes/foot
