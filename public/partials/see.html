@@ -1,16 +1,24 @@
-<section data-ng-controller="ArticlesController" data-ng-init="findOne()">
-    Created at : <span>{{article.created | date:'medium'}}</span>
-    Updated at : <span>{{article.updated | date:'medium'}}</span>
-    <span>{{article.user.name}}</span>
-    <h2>{{article.title}}</h2>
-    <h3>Published : {{article.published}}</h3>
-    <div>{{article.content}}</div>
-    <div data-ng-show="global.user._id == article.user._id">
-        <a class="btn" href="/#!/articles/{{article._id}}/edit">
-            <i class="glyphicon glyphicon-edit">edit</i>
-        </a>
-        <a class="btn" data-ng-click="remove();">
-            <i class="glyphicon glyphicon-trash">delete</i>
-        </a>
+<div class="see-block text-center container" data-ng-controller="ArticlesController" data-ng-init="findOne()">
+    <div class="row">
+        <h2>{{article.title}}</h2>
+        <span>{{article.subtitle}}</span>
+        <div ng-bind-html=article.content></div>
     </div>
-</section>
+
+    <hr class="divider">
+
+    <div class="row">
+        <div class="btn btn-large" ng-class="{true:'btn-success', false:'btn-danger'}[article.published]">Published : {{article.published}} </div>
+        <span class="clearfix">{{article.updated | fromNow}}</span>
+        <span>{{article.user.name}}</span>
+        <div data-ng-show="global.user._id == article.user._id">
+            <a class="btn" href="/#!/articles/{{article._id}}/edit">
+                <i class="glyphicon glyphicon-edit">edit</i>
+            </a>
+            <a class="btn" data-ng-click="remove();">
+                <i class="glyphicon glyphicon-trash">delete</i>
+            </a>
+        </div>
+    </div>
+
+</div>

@@ -3,21 +3,24 @@
 angular.module('penman.articles').controller('ArticlesController', ['$scope', '$routeParams', '$location', 'Flickr', 'Global', 'Articles', function ($scope, $routeParams, $location, Flickr, Global, Articles) {
     $scope.global = Global;
 
-    Flickr.fetch(function(obj){
+    /*Flickr.fetch(function(obj){
         $scope.flickrURL = obj.flickrURL;
-    });
+    });*/
 
     $scope.create = function() {
         var article = new Articles({
             title: this.title,
+            subtitle: this.subtitle,
             content: this.content,
             published : this.saveAsDraft
         });
+
         article.$save(function(response) {
             $location.path('articles/' + response._id);
         });
 
         this.title = '';
+        this.subtitle = '';
         this.content = '';
     };
 

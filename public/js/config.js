@@ -4,12 +4,6 @@
 angular.module('penman').config(['$routeProvider',
     function($routeProvider) {
         $routeProvider.
-        when('/myarticles', {
-            templateUrl: 'partials/all.html'
-        }).
-        when('/mydrafts', {
-            templateUrl: 'partials/all.html'
-        }).
         when('/articles', {
             templateUrl: 'partials/all.html'
         }).
@@ -21,6 +15,9 @@ angular.module('penman').config(['$routeProvider',
         }).
         when('/articles/:articleId', {
             templateUrl: 'partials/see.html'
+        }).
+        when('/users/:username', {
+            templateUrl: 'partials/author.html'
         }).
         when('/', {
             templateUrl: 'partials/all.html'

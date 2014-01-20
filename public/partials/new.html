@@ -1,4 +1,5 @@
-<section data-ng-controller="ArticlesController">
+<section data-ng-controller="ArticlesController" class="container well-lg">
+
 	<form class="form-horizontal" data-ng-submit="create()">
 		<div class="control-group">
 			<label class="control-label" for="title">Title</label>
@@ -6,6 +7,12 @@
 				<input type="text" data-ng-model="title" id="title" placeholder="Title" required>
 			</div>
 		</div>
+        <div class="control-group">
+            <label class="control-label" for="subtitle">SubTitle</label>
+            <div class="controls">
+                <input type="text" data-ng-model="subtitle" id="subtitle" placeholder="Subtitle" required>
+            </div>
+        </div>
 		<div class="control-group">
 			<label class="control-label" for="content">Content</label>
 			<div class="controls">

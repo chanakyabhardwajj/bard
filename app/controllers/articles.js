@@ -26,6 +26,7 @@ exports.article = function(req, res, next, id) {
 exports.create = function(req, res) {
     var article = new Article(req.body);
     article.user = req.user;
+    article.username = req.user.username;
 
     article.save(function(err) {
         if (err) {
@@ -124,32 +125,29 @@ exports.allPublished = function(req, res) {
     });
 };
 
+
 /**
- * List of my Published Articles
+ * List of all Articles (published + unpublished) by a username
  */
-exports.myPublished = function(req, res) {
-    Article.find({published : true, user : req.user}).sort('-created').populate('user', 'name username').exec(function(err, articles) {
+exports.allByUsername = function(username) {
+    return Article.find({username : username}).sort('-created').populate('user', 'name username').exec(function(err, articles) {
         if (err) {
-            res.render('error', {
-                status: 500
-            });
+            return 'Error in fetching the published articles';
         } else {
-            res.jsonp(articles);
+            return articles;
         }
     });
 };
 
 /**
- * List of my Unpublished Articles
+ * List of only PUBLISHED Articles by a username
  */
-exports.myUnpublished = function(req, res) {
-    Article.find({published : false, user : req.user}).sort('-created').populate('user', 'name username').exec(function(err, articles) {
+exports.publishedByUsername = function(username) {
+    return Article.find({username : username, published : true}).sort('-created').populate('user', 'name username').exec(function(err, articles) {
         if (err) {
-            res.render('error', {
-                status: 500
-            });
+            return 'Error in fetching the published articles';
         } else {
-            res.jsonp(articles);
+            return articles;
         }
     });
 };

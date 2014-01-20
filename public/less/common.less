@@ -2,6 +2,10 @@
 Common Styles
 */
 
+.inline{
+  display: inline-block !important;
+}
+
 
 @import "../lib/bootstrap/less/bootstrap";
 @import "../lib/font-awesome/less/font-awesome";
@@ -15,7 +19,7 @@ body {
   -webkit-font-smoothing: antialiased;
 
   a{
-    text-decoration: none;
+    text-decoration: none !important;
     color: inherit;
   }
 
@@ -31,7 +35,7 @@ body {
 
 .content {
   width: 100%;
-  min-height: 500px;
+  margin-top:150px;
   /*background: url("../img/angler_sub.png") no-repeat center center fixed;
   -moz-background-size: cover;
   -webkit-background-size: cover;
@@ -40,9 +44,14 @@ body {
 
 }
 
+.divider{
+  margin:20px 10px;
+  border-top: 1px solid #b8b8b8;
+}
+
 /*Import Section Specific Files*/
 @import "partials/all.less";
 @import "partials/see.less";
 @import "partials/new.less";
 @import "partials/edit.less";
-@import "partials/footer.less";
+@import "partials/banner.less";

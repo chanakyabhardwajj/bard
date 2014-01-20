@@ -4,6 +4,7 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
+    articles = require('./articles'),
     User = mongoose.model('User');
 
 /**
@@ -80,16 +81,40 @@ exports.create = function(req, res, next) {
 };
 
 /**
- * Send User
+ * Send User by Username
  */
-exports.me = function(req, res) {
-    res.jsonp(req.user || null);
+exports.getDetailsByName = function(req, res) {
+    var reqUsername = req.params.username;
+    User.findOne({username: reqUsername}).exec().then(function(reqUser){
+        if(!req.user.username){
+            res.jsonp({error:'You are not allowed. Log in to see this'});
+        }
+
+        if(req.user.username === reqUsername){
+            articles.allByUsername(reqUsername).then(function(articles){
+                res.jsonp({
+                    user : reqUser,
+                    articles : articles
+                });
+            });
+        }
+        else{
+            articles.publishedByUsername(reqUsername).onResolve(function(err, articles){
+                res.jsonp({
+                    user : reqUser,
+                    articles : articles
+                });
+            });
+        }
+
+    });
 };
+
 
 /**
  * Find user by id
  */
-exports.user = function(req, res, next, id) {
+exports.userById = function(req, res, next, id) {
     User
         .findOne({
             _id: id

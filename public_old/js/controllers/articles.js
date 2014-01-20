@@ -1,19 +1,22 @@
 'use strict';
 
-angular.module('penman.articles').controller('ArticlesController', ['$scope', '$routeParams', '$location', 'Global', 'Articles', function ($scope, $routeParams, $location, Global, Articles) {
+angular.module('penman.articles').controller('ArticlesController', ['$scope', '$routeParams', '$location', 'ngSanitize', 'Global', 'Articles', function ($scope, $routeParams, $location, ngSanitize, Global, Articles) {
     $scope.global = Global;
 
     $scope.create = function() {
         var article = new Articles({
             title: this.title,
+            subtitle: this.subtitle,
             content: this.content,
             published : this.saveAsDraft
         });
+        console.log(article);
         article.$save(function(response) {
             $location.path('articles/' + response._id);
         });
 
         this.title = '';
+        this.subtitle = '';
         this.content = '';
     };
 
