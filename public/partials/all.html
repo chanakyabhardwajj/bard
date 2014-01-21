@@ -5,7 +5,7 @@
 
         <div class="articleItemSubtitle" >{{article.subtitle}}</div>
         <div class="clearfix"></div>
-        <span class="articleItemAuthor" >-by {{article.user.name}}</span>
+        <span class="articleItemAuthor" >-by <a href="/#!users/{{article.user.username}}">{{article.user.name}}</a></span>
         <span class="articleItemDate"> {{article.created | fromNow}}</span>
         <!--<div ng-bind-html=article.content></div>-->
         <hr class="divider">

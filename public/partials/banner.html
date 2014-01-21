@@ -5,7 +5,7 @@
                 <strong>penman</strong>
             </a>
             <div class="pull-right" data-ng-show="global.authenticated">
-                <a href="#!/users/{{global.user.username}}"><img class="userImage img-responsive pull-left" src="{{global.user.image_url}}"></a>
+                <a href="#!/users/{{global.user.username}}"><img class="userImage img-responsive pull-left" ng-src="{{global.user.image_url}}"></a>
                 <div class="btn btn-danger"><a href="/signout">Log Out</a></div>
                 <div class="btn btn-success btn-large"><a href="#!/articles/create">Write</a></div>
             </div>

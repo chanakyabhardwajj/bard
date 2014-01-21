@@ -10,7 +10,7 @@
     <div class="row">
         <div class="btn btn-large" ng-class="{true:'btn-success', false:'btn-danger'}[article.published]">Published : {{article.published}} </div>
         <span class="clearfix">{{article.updated | fromNow}}</span>
-        <span>{{article.user.name}}</span>
+        <span><a href="/#!users/{{article.user.username}}">{{article.user.name}}</a></span>
         <div data-ng-show="global.user._id == article.user._id">
             <a class="btn" href="/#!/articles/{{article._id}}/edit">
                 <i class="glyphicon glyphicon-edit">edit</i>

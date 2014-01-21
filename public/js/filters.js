@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('penman').filter('fromNow', function() {
-    return function(/*date*/) {
-        return /*moment(date).fromNow()*/;
+angular.module('penman').filter('fromNow', ['$window', function($window) {
+    return function(date) {
+        return $window.moment(date).fromNow();
     };
-});
+}]);
