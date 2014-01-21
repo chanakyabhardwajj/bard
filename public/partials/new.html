@@ -1,22 +1,18 @@
 <section data-ng-controller="ArticlesController" class="container well-lg">
-
 	<form class="form-horizontal" data-ng-submit="create()">
 		<div class="control-group">
-			<label class="control-label" for="title">Title</label>
 			<div class="controls">
-				<input type="text" data-ng-model="title" id="title" placeholder="Title" required>
+				<div class="editableDiv" placeholder = "title" data-ng-model="title" id="title" contenteditable strip-br="true" ng-paste="pasted($event)"></div>
 			</div>
 		</div>
         <div class="control-group">
-            <label class="control-label" for="subtitle">SubTitle</label>
             <div class="controls">
-                <input type="text" data-ng-model="subtitle" id="subtitle" placeholder="Subtitle" required>
+                <div class="editableDiv" placeholder = "subtitle" data-ng-model="subtitle" id="subtitle" contenteditable strip-br="true" ng-paste="pasted($event)"></div>
             </div>
         </div>
 		<div class="control-group">
-			<label class="control-label" for="content">Content</label>
 			<div class="controls">
-				<textarea data-ng-model="content" id="content" cols="30" rows="10" placeholder="Content"></textarea>
+				<div class="editableDiv" placeholder = "your post" data-ng-model="content" id="content" contenteditable strip-br="true" ng-paste="pasted($event)"></div>
 			</div>
 		</div>
 		<div class="control-group">

@@ -1,7 +1,7 @@
 'use strict';
 
 //Flickr service for getting an image
-angular.module('penman.articles', ['ngResource']).factory('Flickr', [
+angular.module('penman.articles').factory('Flickr', [
     '$resource', function ($resource) {
         return $resource('http://api.flickr.com/services/rest/', {
             method : 'flickr.people.getPublicPhotos',

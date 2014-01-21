@@ -1,6 +1,6 @@
 <div class="all-block text-center container" data-ng-controller="ArticlesController" data-ng-init="find()">
-    <div class="articleItem row" data-ng-repeat="article in articles" data-0="background-color:rgb(0,0,255);" data-500="background-color:rgb(255,0,0);">
-        <h2 class="inline"><a data-ng-href="#!/articles/{{article._id}}">{{article.title}}</a></h2>
+    <div class="articleItem row" data-ng-repeat="article in articles">
+        <h2 data-0="color:rgb(50,50,50);" data-500="color:rgb(200,200,200);" class="inline"><a data-ng-href="#!/articles/{{article._id}}">{{article.title}}</a></h2>
 
 
         <div class="articleItemSubtitle" >{{article.subtitle}}</div>

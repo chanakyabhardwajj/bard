@@ -1,9 +1,19 @@
 'use strict';
 
-angular.module('penman.articles').controller('ArticlesController', ['$scope', '$routeParams', '$location', '$window', '$timeout', 'Flickr', 'Global', 'Articles', function ($scope, $routeParams, $location, $window, $timeout, Flickr, Global, Articles) {
+angular.module('penman.articles').controller('ArticlesController', ['$scope', '$routeParams', '$location', '$window', '$timeout', '$sanitize', 'Flickr', 'Global', 'Articles', function ($scope, $routeParams, $location, $window, $timeout, $sanitize, Flickr, Global, Articles) {
     /*Flickr.fetch(function(obj){
         $scope.flickrURL = obj.flickrURL;
     });*/
+
+    $scope.pasted = function($event){
+        console.log('paste fired');
+        console.log($event);
+        console.log($event.originalEvent.clipboardData.getData('text/plain'));
+        console.log($sanitize($event.originalEvent.clipboardData.getData('text/plain')));
+        $event.target.innerText = /*$sanitize*/($event.originalEvent.clipboardData.getData('text/plain'));
+        $event.originalEvent.preventDefault();
+
+    };
     
     $scope.create = function() {
         var article = new Articles({
