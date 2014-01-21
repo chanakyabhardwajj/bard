@@ -1,12 +1,10 @@
 'use strict';
 
-angular.module('penman.articles').controller('ArticlesController', ['$scope', '$routeParams', '$location', 'Flickr', 'Global', 'Articles', function ($scope, $routeParams, $location, Flickr, Global, Articles) {
-    $scope.global = Global;
-
+angular.module('penman.articles').controller('ArticlesController', ['$scope', '$routeParams', '$location', '$window', '$timeout', 'Flickr', 'Global', 'Articles', function ($scope, $routeParams, $location, $window, $timeout, Flickr, Global, Articles) {
     /*Flickr.fetch(function(obj){
         $scope.flickrURL = obj.flickrURL;
     });*/
-
+    
     $scope.create = function() {
         var article = new Articles({
             title: this.title,
@@ -53,6 +51,10 @@ angular.module('penman.articles').controller('ArticlesController', ['$scope', '$
     $scope.find = function() {
         Articles.query(function(articles) {
             $scope.articles = articles;
+            
+            $timeout(function(){
+                window.skrollr.get().refresh();
+            });
         });
     };
 
@@ -61,6 +63,9 @@ angular.module('penman.articles').controller('ArticlesController', ['$scope', '$
             articleId: $routeParams.articleId
         }, function(article) {
             $scope.article = article;
+            $timeout(function(){
+                window.skrollr.get().refresh();
+            });
         });
     };
 }]);
