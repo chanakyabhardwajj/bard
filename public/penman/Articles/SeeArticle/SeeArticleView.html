@@ -1,0 +1,24 @@
+<div class="see-block text-center container" data-ng-controller="SeeArticleController" data-ng-init="findOne()">
+    <div class="row" data-0="color:rgb(50,50,50);" data-500="color:rgb(200,200,200);">
+        <h2>{{article.title}}</h2>
+        <span>{{article.subtitle}}</span>
+        <div ng-bind-html=article.content></div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="row">
+        <div class="btn btn-large" ng-class="{true:'btn-success', false:'btn-danger'}[article.published]">Published : {{article.published}} </div>
+        <span class="clearfix">{{article.updated | fromNow}}</span>
+        <span><a href="/#!users/{{article.user.username}}">{{article.user.name}}</a></span>
+        <div data-ng-show="userStatus.user._id == article.user._id">
+            <a class="btn" href="/#!/articles/{{article._id}}/edit">
+                <i class="glyphicon glyphicon-edit">edit</i>
+            </a>
+            <a class="btn" data-ng-click="remove();">
+                <i class="glyphicon glyphicon-trash">delete</i>
+            </a>
+        </div>
+    </div>
+
+</div>

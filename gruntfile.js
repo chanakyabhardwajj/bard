@@ -7,7 +7,7 @@ module.exports = function(grunt) {
         watch: {
             styles: {
                 // Which files to watch (all .less files recursively in the less directory)
-                files: ['public/less/**/*.less'],
+                files: ['public/penman/**/*.less'],
                 tasks: ['less'],
                 options: {
                     nospawn: true,
@@ -21,14 +21,14 @@ module.exports = function(grunt) {
                 }
             },
             js: {
-                files: ['gruntfile.js', 'server.js', 'app/**/*.js', 'public/js/**', 'test/**/*.js'],
+                files: ['gruntfile.js', 'server.js', 'app/**/*.js', 'public/penman/**/*.js', 'test/**/*.js'],
                 tasks: ['jshint'],
                 options: {
                     livereload: true
                 }
             },
             html: {
-                files: ['public/partials/**'],
+                files: ['public/penman/**/*.html'],
                 options: {
                     livereload: true
                 }
@@ -43,13 +43,13 @@ module.exports = function(grunt) {
                 },
                 files: {
                     // target.css file: source.less file
-                    'public/css/penman.css': 'public/less/common.less'
+                    'public/css/penman.css': 'public/penman/penman.less'
                 }
             }
         },
         jshint: {
             all: {
-                src: ['gruntfile.js', 'server.js', 'app/**/*.js', 'public/js/**', 'test/**/*.js'],
+                src: ['gruntfile.js', 'server.js', 'app/**/*.js', 'public/penman/**/*.js', 'test/**/*.js'],
                 options: {
                     jshintrc: true
                 }

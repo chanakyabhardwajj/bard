@@ -1,0 +1,14 @@
+<div class="all-block text-center container" data-ng-controller="AllArticlesController" data-ng-init="find()">
+    <div class="articleItem row" data-ng-repeat="article in articles">
+        <h2 data-0="color:rgb(50,50,50);" data-500="color:rgb(200,200,200);" class="inline"><a data-ng-href="#!/articles/{{article._id}}">{{article.title}}</a></h2>
+
+
+        <div class="articleItemSubtitle" >{{article.subtitle}}</div>
+        <div class="clearfix"></div>
+        <span class="articleItemAuthor" >-by <a href="/#!users/{{article.user.username}}">{{article.user.name}}</a></span>
+        <span class="articleItemDate"> {{article.created | fromNow}}</span>
+        <!--<div ng-bind-html=article.content></div>-->
+        <hr class="divider">
+    </div>
+    <h4 data-ng-hide="!articles || articles.length">No articles yet. <br> Why don't you <a href="/#!/articles/create">Create One</a>?</h4>
+</div>

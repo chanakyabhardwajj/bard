@@ -15,24 +15,27 @@ script(type='text/javascript', src='/lib/angular-bootstrap/ui-bootstrap.js')
 script(type='text/javascript', src='/lib/angular-bootstrap/ui-bootstrap-tpls.js')
 script(type='text/javascript', src='/lib/angular-ui-utils/modules/route/route.js')
 
+
 //Application Init
-script(type='text/javascript', src='/js/app.js')
-script(type='text/javascript', src='/js/config.js')
-script(type='text/javascript', src='/js/directives.js')
-script(type='text/javascript', src='/js/filters.js')
+script(type='text/javascript', src='/penman/modules.js')
 
-//Application Services
-script(type='text/javascript', src='/js/services/global.js')
-script(type='text/javascript', src='/js/services/flickr.js')
-script(type='text/javascript', src='/js/services/articles.js')
-script(type='text/javascript', src='/js/services/authors.js')
 
-//Application Controllers
-script(type='text/javascript', src='/js/controllers/articles.js')
-script(type='text/javascript', src='/js/controllers/banner.js')
-script(type='text/javascript', src='/js/controllers/authors.js')
-script(type='text/javascript', src='/js/init.js')
+script(type='text/javascript', src='/penman/Articles/ArticlesService.js')
+script(type='text/javascript', src='/penman/Authors/AuthorsService.js')
+script(type='text/javascript', src='/penman/UserStatus/UserStatusService.js')
 
+script(type='text/javascript', src='/penman/Articles/ArticlesDirective.js')
+script(type='text/javascript', src='/penman/Articles/ArticlesFilter.js')
+
+script(type='text/javascript', src='/penman/Articles/AllArticles/AllArticlesCtrl.js')
+script(type='text/javascript', src='/penman/Articles/EditArticle/EditArticleCtrl.js')
+script(type='text/javascript', src='/penman/Articles/NewArticle/NewArticleCtrl.js')
+script(type='text/javascript', src='/penman/Articles/SeeArticle/SeeArticleCtrl.js')
+script(type='text/javascript', src='/penman/Authors/SeeAuthor/SeeAuthorCtrl.js')
+script(type='text/javascript', src='/penman/UserStatus/UserStatusCtrl.js')
+
+script(type='text/javascript', src='/penman/config.js')
+script(type='text/javascript', src='/penman/init.js')
 
 if (process.env.NODE_ENV == 'development')
     //Livereload script rendered

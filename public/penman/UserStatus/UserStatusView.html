@@ -1,0 +1,18 @@
+<div data-ng-controller="UserStatusController" class="container">
+    <div class="row">
+        <div>
+            <a href="/">
+                <strong>penman</strong>
+            </a>
+            <div class="pull-right" data-ng-show="userStatus.authenticated">
+                <a href="#!/users/{{userStatus.user.username}}"><img class="userImage img-responsive pull-left" ng-src="{{userStatus.user.image_url}}"></a>
+                <div class="btn btn-danger"><a href="/signout">Log Out</a></div>
+                <div class="btn btn-success btn-large"><a href="#!/articles/create">Write</a></div>
+            </div>
+            <ul class="pull-right"  class="col-md-3" data-ng-hide="userStatus.authenticated">
+                <li class="socialIcon"><a href="/auth/facebook"><i class="fa fa-facebook"></i></a></li>
+                <li class="socialIcon"><a href="/auth/twitter"><i class="fa fa-twitter"></i></a></li>
+            </ul>
+        </div>
+    </div>
+</div>
