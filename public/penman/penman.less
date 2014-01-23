@@ -9,6 +9,20 @@ Common Styles
 
 @import "../lib/bootstrap/less/bootstrap";
 @import "../lib/font-awesome/less/font-awesome";
+@import (less) "../lib/medium-editor/dist/css/medium-editor.css";
+
+/*
+  Overriding Medium-Editor Styles
+*/
+
+.medium-editor-placeholder:after {
+  content: attr(data-placeholder);
+  color: #555;
+  position: inherit;
+  font-style: normal !important;
+}
+
+
 
 body {
   background-color: #f2f2f2;
