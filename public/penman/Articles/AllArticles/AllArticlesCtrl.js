@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('penman.Articles').controller('AllArticlesController', ['$scope', '$window', '$timeout', 'UserStatusService', 'ArticlesService',  function ($scope, $window, $timeout, UserStatusService, ArticlesService) {
+angular.module('penman.Articles').controller('AllArticlesController', ['$scope', '$window', '$timeout', 'UserStatusService', 'ArticlesService', function ($scope, $window, $timeout, UserStatusService, ArticlesService) {
     $scope.userStatus = UserStatusService;
 
     $scope.find = function() {

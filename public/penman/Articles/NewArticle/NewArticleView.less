@@ -1,14 +1,38 @@
 /*
 Styles for the NEW partial
 */
-.editableDiv{
-  border: none;
-  outline: none;
-  box-shadow: none;
-  background: #fff;
-  padding: 10px;
-  margin: 20px;
+#poemForm {
+  margin: auto;
+
+  input, .editableDiv {
+    border: none;
+    outline: none;
+    box-shadow: none;
+    padding: 10px;
+    margin: 20px 20px 20px 0;
+    width: 100%;
+    font-weight: normal;
+  }
+
+  #title{
+    border-bottom: 2px solid #ccc;
+    font-size: 30px;
+    font-weight: bold;
+    background: transparent;
+  }
+
+  #subtitle{
+    border-bottom: 2px solid #ccc;
+    background: transparent;
+  }
+
+  #content{
+    min-height: 300px;
+    font-size: 24px;
+  }
 }
+
+
 
 .editableDiv[placeholder]:empty:before {
   content: attr(placeholder);

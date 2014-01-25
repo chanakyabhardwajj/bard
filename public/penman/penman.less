@@ -3,37 +3,29 @@ Common Styles
 */
 
 .inline{
-  display: inline-block !important;
+  display: inline-block;
 }
 
 
 @import "../lib/bootstrap/less/bootstrap";
 @import "../lib/font-awesome/less/font-awesome";
-@import (less) "../lib/medium-editor/dist/css/medium-editor.css";
-
-/*
-  Overriding Medium-Editor Styles
-*/
-
-.medium-editor-placeholder:after {
-  content: attr(data-placeholder);
-  color: #555;
-  position: inherit;
-  font-style: normal !important;
-}
-
-
 
 body {
-  background-color: #f2f2f2;
-  font-family: "Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+  background: url(../img/pattern.jpg) repeat-x;
+  font-family: "Lato", "Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
   font-weight: 300;
   font-size: 16px;
-  color: #181818;
+  color: rgb(50,50,50);
   -webkit-font-smoothing: antialiased;
 
-  a{
+  ::selection {
+    background: #7bacac;
+  }
+
+  a, a:hover, a:active, a:visited{
     text-decoration: none !important;
+    border:none !important;
+    outline: none !important;
     color: inherit;
   }
 
@@ -49,8 +41,11 @@ body {
 
 .content {
   width: 100%;
-  margin-top:150px;
-  /*background: url("../img/angler_sub.png") no-repeat center center fixed;
+  margin-top:50px;
+  /*background-image: url("../img/angler_sub.png");
+  background-repeat: no-repeat;
+  background-position: 0px 0px;
+
   -moz-background-size: cover;
   -webkit-background-size: cover;
   -o-background-size: cover;

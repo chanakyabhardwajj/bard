@@ -1,18 +1,25 @@
-<div data-ng-controller="UserStatusController" class="container">
-    <div class="row">
-        <div>
-            <a href="/">
-                <strong>penman</strong>
-            </a>
-            <div class="pull-right" data-ng-show="userStatus.authenticated">
-                <a href="#!/users/{{userStatus.user.username}}"><img class="userImage img-responsive pull-left" ng-src="{{userStatus.user.image_url}}"></a>
-                <div class="btn btn-danger"><a href="/signout">Log Out</a></div>
-                <div class="btn btn-success btn-large"><a href="#!/articles/create">Write</a></div>
+<div data-ng-controller="UserStatusController" class="">
+    <div class="coverPic" data-0="background-position-x:0px;" data-200="background-position-x:-200px;"></div>
+
+    <div class="headerPanel">
+        <h1 class="title"><a href="/">bard</a></h1>
+        <div class="sideBox inline">
+            <div class="controlBox inline pull-left" data-ng-show="{{userStatus.authenticated}}">
+                <div class="controlIcon"><a href="#!/articles/create">Write</a></div>
+                <div class="controlIcon"><a href="#!/users/{{userStatus.user.username}}">Home</a></div>
             </div>
-            <ul class="pull-right"  class="col-md-3" data-ng-hide="userStatus.authenticated">
-                <li class="socialIcon"><a href="/auth/facebook"><i class="fa fa-facebook"></i></a></li>
-                <li class="socialIcon"><a href="/auth/twitter"><i class="fa fa-twitter"></i></a></li>
-            </ul>
+
+            <div data-ng-hide="{{userStatus.authenticated}}">
+                <div class="subtitle" >
+                    <span typer data-typer-targets="say something .., express something ..">write something ..</span><div class="blink"> </div>
+                </div>
+                <div class="loginBox inline pull-left">
+                    <span class="socialIcon pull-left"><a href="/auth/facebook"><i class="fa fa-facebook"></i></a></span>
+                    <span class="socialIcon pull-left"><a href="/auth/twitter"><i class="fa fa-twitter"></i></a></span>
+                </div>
+            </div>
         </div>
+
+        <div class="btn pull-right" data-ng-show="{{userStatus.authenticated}}"><a href="/signout">Log Out</a></div>
     </div>
 </div>

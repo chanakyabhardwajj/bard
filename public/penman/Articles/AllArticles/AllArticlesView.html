@@ -1,14 +1,18 @@
 <div class="all-block text-center container" data-ng-controller="AllArticlesController" data-ng-init="find()">
-    <div class="articleItem row" data-ng-repeat="article in articles">
-        <h2 data-0="color:rgb(50,50,50);" data-500="color:rgb(200,200,200);" class="inline"><a data-ng-href="#!/articles/{{article._id}}">{{article.title}}</a></h2>
+    <div class="articleItem row" data-ng-repeat="article in articles" data-0="opacity:1" data-top="opacity:0.8" >
+        <a data-ng-href="#!/articles/{{article._id}}">
+            <div class="col-md-3">
+                <h2 class="articleItemTitle" class="inline">{{article.title}}</h2>
+            </div>
+            <div class="col-md-6">
+                <div class="articleItemContent" data-ng-bind-html="article.content| truncate:true:100"><!--{{article.content | truncate:true:100}}--></div>
+            </div>
 
-
-        <div class="articleItemSubtitle" >{{article.subtitle}}</div>
-        <div class="clearfix"></div>
-        <span class="articleItemAuthor" >-by <a href="/#!users/{{article.user.username}}">{{article.user.name}}</a></span>
-        <span class="articleItemDate"> {{article.created | fromNow}}</span>
-        <!--<div ng-bind-html=article.content></div>-->
-        <hr class="divider">
+            <div class="col-md-3">
+                <a href="/#!users/{{article.user.username}}"><img class="articleItemAuthorImg" ng-src="{{article.user.image_url}}"/></a>
+                <span class="clearfix articleItemAuthor" >-by <a href="/#!users/{{article.user.username}}">{{article.user.name}}</a></span>
+                <span class="clearfix articleItemDate"> {{article.created | fromNow}}</span>
+            </div>
+        </a>
     </div>
-    <h4 data-ng-hide="!articles || articles.length">No articles yet. <br> Why don't you <a href="/#!/articles/create">Create One</a>?</h4>
 </div>

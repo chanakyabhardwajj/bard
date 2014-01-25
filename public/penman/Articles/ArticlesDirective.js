@@ -12,6 +12,9 @@ angular.module('penman.Articles').
                     element.html(ngModel.$viewValue || '');
                 };
 
+                ngModel.$setPristine();
+                ngModel.$dirty = false;
+
                 // Write data to the model
                 function read() {
                     var html = element.html();
@@ -31,54 +34,25 @@ angular.module('penman.Articles').
                 read(); // initialize
             }
         };
-    }).
-    //source : https://raw2.github.com/thijsw/angular-medium-editor/master/src/angular-medium-editor.js
-    directive('mediumEditor', function() {
-        return {
-            require: 'ngModel',
-            restrict: 'AE',
-            link: function (scope, iElement, iAttrs, ctrl) {
+    })
+    .directive('keypress', function () {
+        function bindKey(k, scope, element, attributes){
+            window.Mousetrap.bind(k, function() { return attributes[k](scope, element); });
+        }
 
-                angular.element(iElement).addClass('angular-medium-editor');
-
-                // Parse options
-                var opts = {};
-                if (iAttrs.options) {
-                    opts = angular.fromJson(iAttrs.options);
-                }
-
-                var placeholder = opts.placeholder || '';
-
-                // view -> model
-                iElement.on('blur', function() {
-                    scope.$apply(function() {
-
-                        // If user cleared the whole text, we have to reset the editor because MediumEditor
-                        // lacks an API method to alter placeholder after initialization
-                        if (iElement.html() === '<p><br></p>') {
-                            opts.placeholder = placeholder;
-                            var editor = new window.MediumEditor(iElement, opts);
-                        }
-
-                        ctrl.$setViewValue(iElement.html());
-                    });
-                });
-
-                // model -> view
-                ctrl.$render = function() {
-                    if (!editor) {
-                        // Hide placeholder when the model is not empty
-                        if (!ctrl.$isEmpty(ctrl.$viewValue)) {
-                            opts.placeholder = '';
-                        }
-
-                        var editor = new window.MediumEditor(iElement, opts);
-                    }
-
-                    iElement.html(ctrl.$isEmpty(ctrl.$viewValue) ? '' : ctrl.$viewValue);
-                };
-
+        return function (scope, element, attrs) {
+            var attributes = scope.$eval(attrs.keypress || '{}');
+            for (var k in attributes) {
+                bindKey(k, scope, element, attributes);
             }
         };
-
+    })
+    .directive('backImg', function(){
+        return function(scope, element, attrs){
+            var url = attrs.backImg;
+            element.css({
+                'background-image': 'url(' + url +')',
+                'background-size' : 'cover'
+            });
+        };
     });
