@@ -156,7 +156,7 @@ module.exports = function(grunt) {
 
     //This is the task for production setup.
     //Run it like this : "NODE_ENV=production grunt prod"
-    grunt.registerTask('prod', ['jshint', 'less', 'uglify', 'concurrent:target']);
+    grunt.registerTask('prod', ['jshint', 'less', 'uglify']);
 
     //Test task.
     grunt.registerTask('test', ['env:test', 'mochaTest', 'karma:unit']);
