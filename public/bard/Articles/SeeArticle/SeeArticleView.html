@@ -1,0 +1,34 @@
+<div class="all-block text-left container well-lg" data-ng-controller="SeeArticleController" data-ng-init="findOne()">
+    <!--<div class="row" data-0="color:rgb(50,50,50);" data-500="color:rgb(200,200,200);">
+        <h2>{{article.title}}</h2>
+        <span>{{article.subtitle}}</span>
+        <div class="articleItemContent" data-ng-bind-html="article.content | unsafe"></div>
+    </div>-->
+
+    <div id="poemForm">
+        <div id="titleBox">
+            <div id="title">{{article.title}}
+                <span class="articleTitleAuthorName">-by {{article.user.name}}</span>
+            </div>
+            <span class="pull-right articleStatusBox">
+                <span class="pull-left" data-ng-show="article.published === true">
+                    <small>Published {{article.updated | fromNow}}</small>
+                </span>
+                <span class="pull-left" data-ng-show="article.published === false && userStatus.user._id === article.user._id">
+                    <small>Draft saved {{article.updated | fromNow}}</small>
+                </span>
+                <span class="pull-left" data-ng-show="userStatus.user._id === article.user._id">
+                    <a class="editIcon" href="/#!/articles/{{article._id}}/edit">
+                        Edit
+                    </a>
+                    <a class="deleteIcon" data-ng-click="remove();">
+                        Delete
+                    </a>
+                </span>
+            </span>
+        </div>
+
+        <div class="clearFix editableDiv" data-ng-bind-html="article.content | unsafe"></div>
+        <div id="clearFix subtitle" data-ng-show="{{article.subtitle}}">{{article.subtitle}}</div>
+    </div>
+</div>

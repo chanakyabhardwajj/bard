@@ -103,7 +103,7 @@ module.exports = function(passport) {
                         username: profile.username,
                         provider: 'facebook',
                         facebook: profile._json,
-                        image_url : "http://graph.facebook.com/" + profile._json.id + "/picture?type=normal"
+                        image_url : "http://graph.facebook.com/" + profile._json.id + "/picture?type=square"
                     });
                     user.save(function(err) {
                         if (err) console.log(err);

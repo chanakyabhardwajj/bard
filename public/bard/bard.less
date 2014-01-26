@@ -1,0 +1,105 @@
+/*
+Import Files
+*/
+@import "../lib/bootstrap/less/bootstrap";
+@import "../lib/font-awesome/less/font-awesome";
+
+/*
+View Animation Styles
+*/
+.reveal-animation.ng-enter, .reveal-animation.ng-leave {
+  -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+  -moz-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+  -o-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+  transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+
+  position:absolute;
+  left:0;
+  right:0;
+}
+
+.reveal-animation.ng-enter {
+  opacity:0;
+  left:500px;
+}
+
+.reveal-animation.ng-enter.ng-enter-active {
+  left:0;
+  opacity:1;
+}
+
+.reveal-animation.ng-leave {
+  left:0;
+  opacity:1;
+}
+
+.reveal-animation.ng-leave.ng-leave-active {
+  left:-500px;
+  opacity:0;
+}
+
+/*
+Common Styles/Utilities
+*/
+.inline{
+  display: inline-block;
+}
+
+.divider{
+  margin:20px 10px;
+  border-top: 1px solid #b8b8b8;
+}
+
+/*
+Application Styles
+*/
+
+body {
+  //background: url(../img/pattern.jpg) repeat-x;
+  background-color: white;
+  font-family: "Lato", "Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  color: rgb(50,50,50);
+  -webkit-font-smoothing: antialiased;
+
+  ::selection {
+    background: #7bacac;
+  }
+
+  a, a:hover, a:active, a:visited{
+    text-decoration: none !important;
+    border:none !important;
+    outline: none !important;
+    color: inherit;
+  }
+
+  ul {
+    list-style: none;
+    li {
+      float: left;
+      margin: 5px;
+    }
+  }
+
+}
+
+.content {
+  width: 100%;
+  padding-top: 20px;
+  @media(max-width:767px){
+    padding-top: 100px;
+  }
+}
+
+
+
+/*
+Import View Specific Files
+*/
+@import "UserStatus/UserStatusView";
+@import "Articles/AllArticles/AllArticlesView";
+@import "Articles/EditArticle/EditArticleView";
+@import "Articles/NewArticle/NewArticleView";
+@import "Articles/SeeArticle/SeeArticleView";
+@import "Authors/SeeAuthor/SeeAuthorView";

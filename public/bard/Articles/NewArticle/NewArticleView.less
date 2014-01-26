@@ -1,0 +1,81 @@
+/*
+Styles for the NEW partial
+*/
+#poemForm {
+  margin: auto;
+
+  input{
+    border: none;
+    outline: none;
+    box-shadow: none;
+    width: 100%;
+  }
+
+  .editableDiv {
+    border: none;
+    outline: none;
+    box-shadow: none;
+    margin-top: 35px;
+    width: 100%;
+    font-weight: normal;
+    font-size: 24px;
+  }
+
+  #titleBox{
+    .articleStatusBox{
+      background-color: #eee;
+      padding: 10px 10px;
+      font-size: 14px;
+      small{
+        margin: 0 10px;
+      }
+
+      .saveIcon{
+        border-bottom: 2px solid #1abc9c !important;
+        margin: 0 10px;
+        cursor: pointer;
+      }
+
+      .publishIcon{
+        border-bottom: 2px solid #1abc9c !important;
+        margin: 0 10px;
+        cursor: pointer;
+      }
+
+      .editIcon{
+        border-bottom: 2px solid #1abc9c !important;
+        margin: 0 10px;
+        cursor: pointer;
+      }
+
+      .deleteIcon{
+        border-bottom: 2px solid red !important;
+        margin: 0 10px;
+        cursor: pointer;
+      }
+    }
+  }
+  #title{
+    border-bottom: 2px solid #ccc;
+    font-size: 30px;
+    font-weight: bold;
+    background: transparent;
+  }
+
+  #subtitle{
+    border-bottom: 2px solid #ccc;
+    background: transparent;
+  }
+
+  #content{
+    min-height: 300px;
+    font-size: 24px;
+  }
+}
+
+
+
+.editableDiv[placeholder]:empty:before {
+  content: attr(placeholder);
+  color: #555;
+}

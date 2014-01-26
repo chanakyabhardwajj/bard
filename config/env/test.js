@@ -1,10 +1,10 @@
 'use strict';
 
 module.exports = {
-    db: "mongodb://localhost/penman-test",
+    db: "mongodb://localhost/bard-test",
     port: 3001,
     app: {
-        name: "penman - Test"
+        name: "bard - Test"
     },
     facebook: {
         clientID: "APP_ID",

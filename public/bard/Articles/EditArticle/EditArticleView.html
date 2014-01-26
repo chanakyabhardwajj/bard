@@ -1,0 +1,22 @@
+<section class="container well-lg" data-ng-controller="EditArticleController" data-ng-init="findOne()">
+    <div data-ng-show="userStatus.authenticated">
+        <div id="poemForm">
+            <div id="titleBox">
+                <input type="text" class="mousetrap" data-ng-model="article.title" id="title" placeholder="title" required autocomplete="off">
+                <span class="pull-right articleStatusBox">
+                    <span class="pull-left">
+                        <div class="pull-left publishIcon" ng-click="update(true)">Publish</div>
+                        <div class="pull-left saveIcon" ng-click="update(false)">Save</div>
+                        <div class="pull-left deleteIcon" ng-click="remove()">Delete</div>
+                    </span>
+                </span>
+            </div>
+            <div class="editableDiv mousetrap" placeholder = "say what you feel like.." data-ng-model="article.content" id="content" contenteditable required strip-br="true" ng-paste="pasted($event)" keypress="shortcuts"></div>
+            <input type="text" class="mousetrap" data-ng-model="article.subtitle" id="subtitle" placeholder="something about this piece.." required>
+        </div>
+    </div>
+
+    <div data-ng-hide="userStatus.authenticated">
+        <h3>You need to log in</h3>
+    </div>
+</section>

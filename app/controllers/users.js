@@ -86,11 +86,7 @@ exports.create = function(req, res, next) {
 exports.getDetailsByName = function(req, res) {
     var reqUsername = req.params.username;
     User.findOne({username: reqUsername}).exec().then(function(reqUser){
-        if(!req.user.username){
-            res.jsonp({error:'You are not allowed. Log in to see this'});
-        }
-
-        if(req.user.username === reqUsername){
+        if(req.user && req.user.username === reqUsername){
             articles.allByUsername(reqUsername).then(function(articles){
                 res.jsonp({
                     user : reqUser,

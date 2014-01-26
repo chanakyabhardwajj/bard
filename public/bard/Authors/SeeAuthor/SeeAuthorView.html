@@ -1,0 +1,21 @@
+<div class="all-block text-center container" data-ng-controller="SeeAuthorController" data-ng-init="findOne()">
+    <div class="authorItem row">
+        <img class="authorTitleImg" ng-src="{{author.user.image_url}}"/>
+        <h2 class="authorTitle">{{author.user.name}}</h2>
+    </div>
+
+    <div class="articleItem row" ng-class="{false:'articleDraftItem', true:''}[article.published]" data-ng-repeat="article in author.articles" data-0="opacity:1" data-top="opacity:0.8" >
+        <div class="articleItemTitle col-md-4" class="inline">
+            <a data-ng-href="#!/articles/{{article._id}}">
+                {{article.title}}
+            </a>
+            <div class="articleItemStatus" data-ng-hide="{{article.published}}"><em>Draft</em> : Click to edit</div>
+        </div>
+        <div class="articleItemContent col-md-4" data-ng-bind-html="article.content | truncate:true:100 | unsafe"></div>
+        <div class="articleItemAuthor  col-md-4">
+            <a href="/#!users/{{article.user.username}}"><img class="articleItemAuthorImg" ng-src="{{article.user.image_url}}"/></a>
+            <!--<span class="clearfix articleItemAuthor" >-by <a href="/#!users/{{article.user.username}}">{{article.user.name}}</a></span>-->
+            <span class="clearfix articleItemDate"> {{article.created | fromNow}}</span>
+        </div>
+    </div>
+</div>

@@ -1,5 +1,5 @@
 {
-  "name": "penman",
+  "name": "bard",
   "version": "0.0.1",
   "dependencies": {
     "angular": "latest",
@@ -15,7 +15,7 @@
     "momentjs": "~2.5.0",
     "angular-moment": "~0.6.0",
     "skrollr": "~0.6.21",
-    "medium-editor": "~1.5.0"
+    "angular-animate": "~1.2.10"
   },
   "devDependencies": {}
 }
