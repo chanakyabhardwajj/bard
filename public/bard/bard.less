@@ -50,6 +50,27 @@ Common Styles/Utilities
   border-top: 1px solid #b8b8b8;
 }
 
+.blink  {
+  width:1px;
+  height: 16px;
+  margin-top: 14px;
+  margin-left:1px;
+  display: inline-block;
+  background: #242424;
+  -webkit-animation: blink 0.85s cubic-bezier(1.0,0,0,1.0) infinite;
+  -moz-animation: blink 0.85s cubic-bezier(1.0,0,0,1.0) infinite;
+  animation: blink 0.85s cubic-bezier(1.0,0,0,1.0) infinite;
+}
+@keyframes blink {
+  from { opacity: 1.0; }
+  to { opacity: 0.0; }
+}
+
+@-webkit-keyframes blink {
+  from { opacity: 1.0; }
+  to { opacity: 0.0; }
+}
+
 /*
 Application Styles
 */
@@ -60,7 +81,7 @@ body {
   font-family: "Lato", "Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
   font-weight: 300;
   font-size: 16px;
-  color: rgb(50,50,50);
+  color: #242424;
   -webkit-font-smoothing: antialiased;
 
   ::selection {
@@ -86,9 +107,10 @@ body {
 
 .content {
   width: 100%;
-  padding-top: 420px;
-  @media(max-width:767px){
-    padding-top: 100px;
+  padding-top: 30px;
+  .view-progress{
+    position:absolute;
+    right:10px;
   }
 }
 

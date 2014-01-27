@@ -6,8 +6,8 @@ module.exports = {
         name: "bard - Development"
     },
     facebook: {
-        clientID: "621077091262153",
-        clientSecret: "4f9d9f12c366b6d3fa108a1df1d5cc62",
+        clientID: "1455157534697493",
+        clientSecret: "30b51f2bb84b2fc20373fd4caec5d7f6",
         callbackURL: "http://localhost:3000/auth/facebook/callback"
     },
     twitter: {

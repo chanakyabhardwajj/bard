@@ -1,4 +1,4 @@
-<section class="container well-lg" data-ng-controller="EditArticleController" data-ng-init="findOne()">
+<section class="container well-lg">
     <div data-ng-show="userStatus.authenticated">
         <div id="poemForm">
             <div id="titleBox">
@@ -11,12 +11,13 @@
                     </span>
                 </span>
             </div>
-            <div class="editableDiv mousetrap" placeholder = "say what you feel like.." data-ng-model="article.content" id="content" contenteditable required strip-br="true" ng-paste="pasted($event)" keypress="shortcuts"></div>
+
+            <div class="editableDiv mousetrap" placeholder = "say what you feel like.." data-ng-bind-html="article.contentClone | unsafe" data-ng-model="article.content" id="content" contenteditable required strip-br="true" ng-paste="pasted($event)" keypress="shortcuts"></div>
             <input type="text" class="mousetrap" data-ng-model="article.subtitle" id="subtitle" placeholder="something about this piece.." required>
         </div>
     </div>
 
     <div data-ng-hide="userStatus.authenticated">
-        <h3>You need to log in</h3>
+        <h3>Please log in to edit this post..</h3>
     </div>
 </section>

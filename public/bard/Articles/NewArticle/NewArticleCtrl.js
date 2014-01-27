@@ -6,7 +6,7 @@ angular.module('bard.Articles').controller('NewArticleController', ['$scope', '$
     $scope.contentError = false;
 
     $scope.pasted = function($event){
-        $event.target.innerText = /*$sanitize*/($event.originalEvent.clipboardData.getData('text/plain'));
+        $event.target.innerText = $event.target.innerText + /*$sanitize*/($event.originalEvent.clipboardData.getData('text/plain'));
         $event.originalEvent.preventDefault();
     };
 
@@ -29,16 +29,16 @@ angular.module('bard.Articles').controller('NewArticleController', ['$scope', '$
 
         article.$save(function(response) {
             if(toPublish){
-                $location.path('articles/' + response._id + '/edit');
+                $location.path('/');
             }
             else{
                 $location.path('articles/' + response._id);
             }
         });
 
-        this.title = '';
-        this.subtitle = '';
-        this.content = '';
+        //this.title = '';
+        //this.subtitle = '';
+        //this.content = '';
     };
 
     $scope.shortcuts = {

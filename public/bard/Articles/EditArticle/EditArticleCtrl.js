@@ -1,12 +1,12 @@
 'use strict';
 
-angular.module('bard.Articles').controller('EditArticleController', ['$scope', '$routeParams', '$location', '$timeout', '$sanitize', 'UserStatusService', 'ArticlesService', function ($scope,  $routeParams, $location, $timeout, $sanitize, UserStatusService, ArticlesService) {
+angular.module('bard.Articles').controller('EditArticleController', ['$scope', '$routeParams', '$location', '$timeout', '$sanitize', 'UserStatusService', 'ArticlesService', 'resolvedArticle', function ($scope,  $routeParams, $location, $timeout, $sanitize, UserStatusService, ArticlesService, resolvedArticle) {
     $scope.userStatus = UserStatusService;
+    $scope.article = resolvedArticle;
 
     $scope.pasted = function($event){
-        $event.target.innerText = /*$sanitize*/($event.originalEvent.clipboardData.getData('text/plain'));
+        $event.target.innerText = $event.target.innerText + /*$sanitize*/($event.originalEvent.clipboardData.getData('text/plain'));
         $event.originalEvent.preventDefault();
-
     };
 
     $scope.update = function(toPublish) {
@@ -34,16 +34,5 @@ angular.module('bard.Articles').controller('EditArticleController', ['$scope', '
             $scope.article.$remove();
             $location.path('articles');
         }
-    };
-
-    $scope.findOne = function() {
-        ArticlesService.get({
-            articleId: $routeParams.articleId
-        }, function(article) {
-            $scope.article = article;
-            $timeout(function(){
-                window.skrollr.get().refresh();
-            });
-        });
     };
 }]);

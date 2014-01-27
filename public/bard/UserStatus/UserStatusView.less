@@ -5,18 +5,20 @@ Styles for the Header
   color: white;
 
   .headerPanel{
+    position: relative;
     padding: 10px;
-    position: fixed;
     width:100%;
     z-index: 100;
     top:0;
     left:0;
-    background-color: rgba(126,118,116,0.5);
+    border-bottom:1px solid #efefef;
+    color:#242424;
 
     .title{
       font-size: 70px;
       margin-bottom: 20px;
       display: inline;
+      font-weight:100;
     }
 
     .sideBox{
@@ -25,34 +27,16 @@ Styles for the Header
       margin-left: 5px;
 
       .subtitle{
-        font-weight: 400;
+        font-weight:400;
         font-size: 16px;
+        color:#1abc9c;
 
-        .blink  {
-          width:1px;
-          height: 16px;
-          margin-top: 10px;
-          margin-left:1px;
-          display: inline-block;
-          background: rgba(255,255,255,1);
-          -webkit-animation: blink 0.85s cubic-bezier(1.0,0,0,1.0) infinite;
-          -moz-animation: blink 0.85s cubic-bezier(1.0,0,0,1.0) infinite;
-          animation: blink 0.85s cubic-bezier(1.0,0,0,1.0) infinite;
-        }
-        @keyframes blink {
-          from { opacity: 1.0; }
-          to { opacity: 0.0; }
-        }
 
-        @-webkit-keyframes blink {
-          from { opacity: 1.0; }
-          to { opacity: 0.0; }
-        }
       }
 
       .loginBox{
         .socialIcon{
-          font-size: 30px;
+          font-size: 26px;
           .fa-twitter{
             margin-left: 10px;
             color: #55acee;
@@ -65,55 +49,17 @@ Styles for the Header
 
       .controlBox{
         .controlIcon{
-          font-size: 30px;
-          font-weight: 400;
+          font-size: 26px;
         }
       }
     }
 
     .introBox{
       text-align: right;
-      font-weight: 400;
     }
   }
 
   .userImage{
     width: 50px;
-  }
-
-  /*.coverPic{
-    background: url(../img/hammock.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position-y: -170px;
-    z-index:-2;
-    position: absolute;
-    width: 100%;
-    height: 660px;
-    top: 0;
-  }*/
-
-  .coverPic{
-    background: url('../img/hammock.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    z-index:-2;
-    position: absolute;
-    width: 100%;
-    height: 660px;
-    top: 0;
-
-    @media(max-width:767px){
-      display: none;
-    }
-    @media(min-width:768px){
-      height: 400px;
-    }
-    @media(min-width:992px){
-      height: 400px;
-    }
-    @media(min-width:1200px){
-      height: 400px;
-    }
   }
 }

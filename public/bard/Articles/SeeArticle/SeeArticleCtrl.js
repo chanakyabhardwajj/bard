@@ -1,7 +1,8 @@
 'use strict';
 
-angular.module('bard.Articles').controller('SeeArticleController', ['$scope', '$routeParams', '$location', '$window', '$timeout', 'UserStatusService', 'ArticlesService', function ($scope, $routeParams, $location, $window, $timeout, UserStatusService, ArticlesService) {
+angular.module('bard.Articles').controller('SeeArticleController', ['$scope', '$routeParams', '$location', '$window', '$timeout', 'UserStatusService', 'ArticlesService', 'resolvedArticle', function ($scope, $routeParams, $location, $window, $timeout, UserStatusService, ArticlesService, resolvedArticle) {
     $scope.userStatus = UserStatusService;
+    $scope.article = resolvedArticle;
 
     $scope.remove = function(article) {
         if (article) {
@@ -18,15 +19,5 @@ angular.module('bard.Articles').controller('SeeArticleController', ['$scope', '$
             $location.path('articles');
         }
     };
-
-    $scope.findOne = function() {
-        ArticlesService.get({
-            articleId: $routeParams.articleId
-        }, function(article) {
-            $scope.article = article;
-            $timeout(function(){
-                window.skrollr.get().refresh();
-            });
-        });
-    };
 }]);
+

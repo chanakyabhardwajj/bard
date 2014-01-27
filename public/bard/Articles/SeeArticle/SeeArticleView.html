@@ -1,10 +1,4 @@
-<div class="all-block text-left container well-lg" data-ng-controller="SeeArticleController" data-ng-init="findOne()">
-    <!--<div class="row" data-0="color:rgb(50,50,50);" data-500="color:rgb(200,200,200);">
-        <h2>{{article.title}}</h2>
-        <span>{{article.subtitle}}</span>
-        <div class="articleItemContent" data-ng-bind-html="article.content | unsafe"></div>
-    </div>-->
-
+<div class="all-block text-left container well-lg">
     <div id="poemForm">
         <div id="titleBox">
             <div id="title">{{article.title}}
@@ -29,6 +23,6 @@
         </div>
 
         <div class="clearFix editableDiv" data-ng-bind-html="article.content | unsafe"></div>
-        <div id="clearFix subtitle" data-ng-show="{{article.subtitle}}">{{article.subtitle}}</div>
+        <div id="clearFix subtitle" data-ng-if="article.subtitle">{{article.subtitle}}</div>
     </div>
 </div>

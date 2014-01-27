@@ -1,5 +1,7 @@
 extends layouts/default
 block content
+  div.view-progress(data-ng-show="loadingView") hold on..
+      <div class="blink"> </div>
   section(data-ng-view class="reveal-animation")
   script(type="text/javascript").
     window.user = !{user};

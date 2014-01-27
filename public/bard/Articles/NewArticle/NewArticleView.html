@@ -1,4 +1,4 @@
-<section class="container well-lg" data-ng-controller="NewArticleController">
+<section class="container well-lg">
     <div data-ng-show="userStatus.authenticated">
         <div id="poemForm">
             <div id="titleBox">
@@ -18,7 +18,7 @@
     </div>
 
     <div data-ng-hide="userStatus.authenticated">
-        <h3>You need to log in</h3>
+        <h3>Please log in to create a new post...</h3>
     </div>
 </section>
 

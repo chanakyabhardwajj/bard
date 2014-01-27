@@ -1,13 +1,6 @@
 'use strict';
 
-angular.module('bard.Authors').controller('SeeAuthorController', ['$scope', '$routeParams', '$location', 'UserStatusService', 'AuthorsService', function ($scope, $routeParams, $location, UserStatusService, AuthorsService) {
+angular.module('bard.Authors').controller('SeeAuthorController', ['$scope', '$routeParams', '$location', 'UserStatusService', 'AuthorsService', 'resolvedAuthor', function ($scope, $routeParams, $location, UserStatusService, AuthorsService, resolvedAuthor) {
     $scope.userStatus = UserStatusService;
-
-    $scope.findOne = function() {
-        AuthorsService.get({
-            username: $routeParams.username
-        }, function(author) {
-            $scope.author = author;
-        });
-    };
+    $scope.author = resolvedAuthor;
 }]);

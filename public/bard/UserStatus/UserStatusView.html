@@ -1,7 +1,6 @@
 <div data-ng-controller="UserStatusController" class="">
     <!--<div class="coverPic"></div>-->
-    <div class="coverPic" data-0="background-position-y: -220px;" data-300="background-position-y: -320px;"></div>
-    <div class="headerPanel" data-0="background-color: rgba(126,118,116,0.5);" data-300="background-color: rgba(86,78,76,0.9);">
+    <div class="headerPanel">
         <h1 class="title"><a href="/">bard</a></h1>
         <div class="sideBox inline">
             <div class="controlBox inline pull-left" data-ng-show="{{userStatus.authenticated}}">
@@ -22,7 +21,9 @@
 
         <div class="pull-right" data-ng-show="{{userStatus.authenticated}}"><a href="/signout">Log Out</a></div>
         <div class="pull-right introBox" data-ng-hide="{{userStatus.authenticated}}">
-            no frills<br>no images<br>just you and your thoughts
+            a <strong>simple</strong> blogging platform
+            <br>
+            no frills/no images/just you and your thoughts
         </div>
     </div>
 </div>

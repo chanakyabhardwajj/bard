@@ -5,9 +5,26 @@ Styles for the ALL partial
 .all-block{
   margin: auto;
   .articleItem{
-    margin-bottom: 15px;
-    text-align: center;
-    padding: 20px 0;
+    text-align: left;
+    border-left:2px dashed #1abc9c;
+    padding: 10px 10px 0px 10px;
+    margin-bottom:50px;
+    transition: all 0.2s ease;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    margin-left:60px;
+    @media(max-width:767px){
+      margin-left:20px;
+    }
+    @media(min-width:768px){
+      margin-left:40px;
+    }
+    @media(min-width:992px){
+      margin-left:60px;
+    }
+    @media(min-width:1200px){
+      margin-left:60px;
+    }
     //background: rgba(220,220,220,0.8);
 
     .articleItemDate{
@@ -19,10 +36,14 @@ Styles for the ALL partial
     }
 
     .articleItemTitle{
-
+      clear:both;
       font-size: 40px;
-      font-weight: bold;
+      line-height:40px;
       letter-spacing: -2px;
+      transition: all 0.2s ease;
+      -webkit-transition: all 0.2s ease;
+      -moz-transition: all 0.2s ease;
+      margin-bottom:5px;
 
       .articleItemStatus{
         font-size: 14px;
@@ -31,34 +52,47 @@ Styles for the ALL partial
     }
 
     .articleItemSubtitle{
+      clear:both;
       font-size: 20px;
       font-weight: 400;
 
     }
 
     .articleItemContent{
+      clear:both;
       font-size: 16px;
       font-weight: 400;
-      margin-top: 20px;
+      margin-top:20px;
     }
 
     .articleItemAuthor{
-      padding: 10px;
+      clear:both;
+      padding: 10px 2px;
+      margin-top:20px;
     }
 
     .articleItemAuthorImg{
       background-size: cover;
       width: 50px;
       height: 50px;
-      border-radius: 25px;
+      border-radius: 1px;
     }
   }
 
   .articleItem:hover{
     opacity: 1 !important;
+    border-left:2px solid #1abc9c;
+
+    .articleItemTitle{
+      border-bottom:2px solid #1abc9c;
+    }
   }
 
   .articleDraftItem{
-    border-left: 10px solid #ea7;
+    border-left: 2px dashed #4DBCD1;
+  }
+
+  .articleDraftItem:hover{
+    border-left: 2px solid #4DBCD1;
   }
 }

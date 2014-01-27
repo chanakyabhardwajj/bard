@@ -1,8 +1,8 @@
-<div class="all-block text-center container" data-ng-controller="AllArticlesController" data-ng-init="find()">
-    <div class="articleItem row" data-ng-repeat="article in articles" data-0="opacity:1" data-top="opacity:0.8" >
-        <div class="articleItemTitle col-md-4" class="inline"><a data-ng-href="#!/articles/{{article._id}}">{{article.title}}</a></div>
-        <div class="articleItemContent col-md-4" data-ng-bind-html="article.content | truncate:true:100 | unsafe"></div>
-        <div class="articleItemAuthor  col-md-4">
+<div class="all-block text-center container">
+    <div class="articleItem row" data-ng-repeat="article in articles">
+        <div class="articleItemTitle pull-left" class=""><a data-ng-href="#!/articles/{{article._id}}">{{article.title}}</a></div>
+        <div class="articleItemContent pull-left" data-ng-bind-html="article.content | truncate:true:200 | unsafe"></div>
+        <div class="articleItemAuthor pull-left">
             <a href="/#!users/{{article.user.username}}"><img class="articleItemAuthorImg" ng-src="{{article.user.image_url}}"/></a>
             <!--<span class="clearfix articleItemAuthor" >-by <a href="/#!users/{{article.user.username}}">{{article.user.name}}</a></span>-->
             <span class="clearfix articleItemDate"> {{article.created | fromNow}}</span>

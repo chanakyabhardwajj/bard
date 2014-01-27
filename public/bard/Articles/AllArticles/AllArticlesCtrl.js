@@ -1,15 +1,6 @@
 'use strict';
 
-angular.module('bard.Articles').controller('AllArticlesController', ['$scope', '$window', '$timeout', 'UserStatusService', 'ArticlesService', function ($scope, $window, $timeout, UserStatusService, ArticlesService) {
+angular.module('bard.Articles').controller('AllArticlesController', ['$scope', '$window', '$timeout', 'UserStatusService', 'ArticlesService', 'resolvedArticles', function ($scope, $window, $timeout, UserStatusService, ArticlesService, resolvedArticles) {
     $scope.userStatus = UserStatusService;
-
-    $scope.find = function() {
-        ArticlesService.query(function(articles) {
-            $scope.articles = articles;
-
-            $timeout(function(){
-                window.skrollr.get().refresh();
-            });
-        });
-    };
+    $scope.articles = resolvedArticles;
 }]);
