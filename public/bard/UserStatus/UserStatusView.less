@@ -70,6 +70,11 @@ Styles for the Header
         }
       }
     }
+
+    .introBox{
+      text-align: right;
+      font-weight: 400;
+    }
   }
 
   .userImage{
@@ -88,9 +93,15 @@ Styles for the Header
     top: 0;
   }*/
 
-  .backPicBox{
-    overflow: hidden;
+  .coverPic{
+    background: url('../img/hammock.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index:-2;
+    position: absolute;
     width: 100%;
+    height: 660px;
+    top: 0;
 
     @media(max-width:767px){
       display: none;
@@ -104,12 +115,5 @@ Styles for the Header
     @media(min-width:1200px){
       height: 400px;
     }
-  }
-
-  .backPic{
-    position: relative;
-    width: 100%;
-    top:-100px;
-    left:0px;
   }
 }

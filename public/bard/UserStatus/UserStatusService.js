@@ -10,7 +10,7 @@ angular.module('bard.UserStatus').factory('UserStatusService', [
         };
         return _this._data;
     }
-]).factory('FlickrService', [
+])/*.factory('FlickrService', [
     '$resource', function ($resource) {
         return $resource('http://api.flickr.com/services/rest/', {
             user_id : '9669844@N02',
@@ -35,4 +35,4 @@ angular.module('bard.UserStatus').factory('UserStatusService', [
             }}
         });
     }
-]);
+])*/;
