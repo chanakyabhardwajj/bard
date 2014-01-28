@@ -5,12 +5,10 @@ bard.run(['$rootScope', function($root) {
     $root.$on('$routeChangeStart', function(e, curr, prev) {
         if (curr.$$route && curr.$$route.resolve) {
             $root.loadingView = true;
-            console.log('loading view TRUE');
         }
     });
     $root.$on('$routeChangeSuccess', function(e, curr, prev) {
         $root.loadingView = false;
-        console.log('loading view FALSE');
     });
 }]);
 

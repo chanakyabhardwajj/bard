@@ -39,6 +39,55 @@ View Animation Styles
 }
 
 /*
+Modal Styles
+*/
+.modal {
+  display: block;
+  width: 400px;
+  margin: auto;
+  background: #fff;
+  height: 500px;
+  font-weight:300;
+
+  .modal-header{
+    padding-bottom:5px;
+    border-bottom:2px solid #1abc9c;
+    .modal-header-title{
+      font-size:16px;
+      font-weight:400;
+    }
+    .modal-header-subtitle{
+      margin-top:5px;
+      font-size:14px;
+      font-weight:300;
+    }
+  }
+
+  .modal-body{
+    table{
+      width: 100%;
+      td.commandKey{
+        float:left;
+      }
+      td.command{
+        font-weight:bold;
+        float:right;
+      }
+    }
+  }
+}
+.modal-body:before,
+.modal-body:after {
+  display: table;
+  content: " ";
+}
+.modal-header:before,
+.modal-header:after {
+  display: table;
+  content: " ";
+}
+
+/*
 Common Styles/Utilities
 */
 .inline{
@@ -49,6 +98,13 @@ Common Styles/Utilities
   margin:20px 10px;
   border-top: 1px solid #b8b8b8;
 }
+
+blockquote{
+  border-left:5px solid #1abc9c !important;
+  padding-left:10px !important;
+}
+
+white-space: pre;
 
 .blink  {
   width:1px;

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('bard.Articles').controller('NewArticleController', ['$scope', '$location', '$sanitize', 'UserStatusService', 'ArticlesService', function ($scope, $location, $sanitize, UserStatusService, ArticlesService) {
+angular.module('bard.Articles').controller('NewArticleController', ['$scope', '$location', '$sanitize', '$modal', 'UserStatusService', 'ArticlesService', function ($scope, $location, $sanitize, $modal, UserStatusService, ArticlesService) {
     $scope.userStatus = UserStatusService;
     $scope.titleError = false;
     $scope.contentError = false;
@@ -39,6 +39,10 @@ angular.module('bard.Articles').controller('NewArticleController', ['$scope', '$
         //this.title = '';
         //this.subtitle = '';
         //this.content = '';
+    };
+
+    $scope.openModal = function () {
+        $modal.open({templateUrl: 'shortcutModal.html'});
     };
 
     $scope.shortcuts = {
@@ -80,10 +84,11 @@ angular.module('bard.Articles').controller('NewArticleController', ['$scope', '$
             document.execCommand('justifycenter');
             return false;
         },
-        'mod+shift+!': function () {
+        /*'mod+shift+5': function () {
             document.execCommand('formatblock', false, 'blockquote');
+            document.execCommand('indent');
             return false;
-        },
+        },*/
         'tab': function () {
             document.execCommand('indent');
             return false;
