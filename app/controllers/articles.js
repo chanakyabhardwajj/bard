@@ -87,12 +87,16 @@ exports.show = function(req, res) {
         res.jsonp(req.article);
     }
     else{
-        //article.user.id == req.user.id;
-        if(article.user.id === req.user.id){
-            res.jsonp(req.article);
+        if(req.user){
+            if(article.user.id === req.user.id){
+                res.jsonp(req.article);
+            }
+            else{
+                res.status(404).send('You are not authorised to see this article ...');
+            }
         }
         else{
-            res.jsonp('This is an unpublished article & you are not authorised to see it');
+            res.status(404).send('Please log in to see this content ...');
         }
     }
 };

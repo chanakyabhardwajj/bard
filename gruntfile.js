@@ -66,7 +66,8 @@ module.exports = function(grunt) {
                     'public/lib/angular-animate/angular-animate.js',
                     'public/lib/angular-bootstrap/ui-bootstrap.js',
                     'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
-                    'public/lib/angular-ui-utils/modules/route/route.js'],
+                    'public/lib/angular-ui-utils/modules/route/route.js',
+                    'public/bard/ga.js'],
 
                     'public/dist/bard.min.js' : ['public/bard/modules.js',
                     'public/bard/Articles/ArticlesService.js',

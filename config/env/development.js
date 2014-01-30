@@ -14,7 +14,7 @@ module.exports = {
         clientID: "lDr2ruEINuyOMGGVTRWQ",
         clientSecret: "SBUD7jDUOeg8jFUzEfMSSz0qCEydsdvT1kx1zezQw8",
         callbackURL: "http://localhost:3000/auth/twitter/callback"
-    },
+    }/*,
     github: {
         clientID: "APP_ID",
         clientSecret: "APP_SECRET",
@@ -24,5 +24,5 @@ module.exports = {
         clientID: "APP_ID",
         clientSecret: "APP_SECRET",
         callbackURL: "http://localhost:3000/auth/google/callback"
-    }
+    }*/
 }

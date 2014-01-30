@@ -104,13 +104,17 @@ blockquote{
   padding-left:10px !important;
 }
 
+h3{
+  font-weight:100;
+}
+
 .blink  {
   width:1px;
-  height: 16px;
+  height: 14px;
   margin-top: 14px;
   margin-left:1px;
   display: inline-block;
-  background: #242424;
+  background: #1abc9c;
   -webkit-animation: blink 0.85s cubic-bezier(1.0,0,0,1.0) infinite;
   -moz-animation: blink 0.85s cubic-bezier(1.0,0,0,1.0) infinite;
   animation: blink 0.85s cubic-bezier(1.0,0,0,1.0) infinite;
@@ -163,8 +167,12 @@ body {
   width: 100%;
   padding-top: 30px;
   .view-progress{
-    position:absolute;
-    right:10px;
+    position: absolute;
+    right: 50%;
+    top: 85px;
+    .blink{
+      background: #242424;
+    }
   }
 }
 

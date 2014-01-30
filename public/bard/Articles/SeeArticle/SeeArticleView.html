@@ -1,8 +1,8 @@
 <div class="all-block text-left container well-lg">
-    <div id="poemForm">
+    <div data-ng-hide="errored" id="poemForm">
         <div id="titleBox">
             <div id="title">{{article.title}}
-                <span class="articleTitleAuthorName">-by {{article.user.name}}</span>
+                <span class="articleTitleAuthorName">-by <a href="/#!users/{{article.user.username}}">{{article.user.name}}</a></span>
             </div>
             <span class="pull-right articleStatusBox">
                 <span class="pull-left" data-ng-show="article.published === true">
@@ -24,5 +24,8 @@
 
         <div class="clearFix editableDiv" data-ng-bind-html="article.content | unsafe"></div>
         <div id="clearFix subtitle" data-ng-if="article.subtitle">{{article.subtitle}}</div>
+    </div>
+    <div data-ng-show="errored" id="errorBox">
+        <h3>{{errorMsg}}</h3>
     </div>
 </div>

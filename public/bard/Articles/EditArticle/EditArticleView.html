@@ -25,7 +25,7 @@
     </div>
 </script>
 <section class="container well-lg">
-    <div data-ng-show="userStatus.authenticated">
+    <div data-ng-show="userStatus.authenticated && !errored">
         <div id="poemForm">
             <div id="titleBox">
                 <input type="text" class="mousetrap" data-ng-model="article.title" id="title" placeholder="title" required autocomplete="off">
@@ -46,5 +46,8 @@
 
     <div data-ng-hide="userStatus.authenticated">
         <h3>Please log in to edit this post..</h3>
+    </div>
+    <div data-ng-show="errored">
+        <h3>{{errorMsg}}</h3>
     </div>
 </section>

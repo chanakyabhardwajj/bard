@@ -25,12 +25,14 @@ angular.module('bard').config(['$routeProvider',
                 templateUrl: 'bard/Articles/EditArticle/EditArticleView.html',
                 controller : 'EditArticleController',
                 resolve : {
-                    resolvedArticle: function(ArticlesService, $q, $route) {
+                    articlePromise: function(ArticlesService, $q, $route) {
                         var deferred = $q.defer();
                         ArticlesService.get({articleId: $route.current.params.articleId},function(article) {
                             //This for sure is one of the biggest Angular wtf
                             article.contentClone = article.content;
-                            deferred.resolve(article);
+                            deferred.resolve({success:true, data:article});
+                        }, function(err){
+                            deferred.resolve({success:false, data:err});
                         });
                         return deferred.promise;
                     }
@@ -40,10 +42,12 @@ angular.module('bard').config(['$routeProvider',
                 templateUrl: 'bard/Articles/SeeArticle/SeeArticleView.html',
                 controller : 'SeeArticleController',
                 resolve : {
-                    resolvedArticle: function(ArticlesService, $q, $route) {
+                    articlePromise: function(ArticlesService, $q, $route) {
                         var deferred = $q.defer();
                         ArticlesService.get({articleId: $route.current.params.articleId}, function(article) {
-                            deferred.resolve(article);
+                            deferred.resolve({success:true, data:article});
+                        }, function(err){
+                            deferred.resolve({success:false, data:err});
                         });
                         return deferred.promise;
                     }

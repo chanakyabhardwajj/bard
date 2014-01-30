@@ -35,10 +35,6 @@ angular.module('bard.Articles').controller('NewArticleController', ['$scope', '$
                 $location.path('articles/' + response._id);
             }
         });
-
-        //this.title = '';
-        //this.subtitle = '';
-        //this.content = '';
     };
 
     $scope.openModal = function () {
