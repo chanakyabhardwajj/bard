@@ -2,8 +2,7 @@
 
 angular.module('bard.Articles').controller('EditArticleController', ['$scope', '$routeParams', '$location', '$timeout', '$sanitize', '$modal', 'UserStatusService', 'ArticlesService', 'articlePromise', function ($scope, $routeParams, $location, $timeout, $sanitize, $modal, UserStatusService, ArticlesService, articlePromise) {
     $scope.userStatus = UserStatusService;
-    console.log(articlePromise);
-    if (articlePromise.success) {
+    if (articlePromise.success && $scope.userStatus.authenticated) {
         if(articlePromise.data.user._id === $scope.userStatus.user._id){
             $scope.article = articlePromise.data;
             $scope.pasted = function ($event) {
