@@ -117,7 +117,7 @@ exports.show = function(req, res) {
  * Get all Published Articles
  */
 exports.getAllPublished = function() {
-    return Article.find({published : true}).sort('-created').populate('user', 'name username image_url').exec(function(err, articles) {
+    return Article.find({published : true}).sort('-updated').populate('user', 'name username image_url').exec(function(err, articles) {
         if (err) {
             return 'Error in fetching the published articles';
         } else {
@@ -130,7 +130,7 @@ exports.getAllPublished = function() {
  * List of all Published Articles
  */
 exports.allPublished = function(req, res) {
-    Article.find({published : true}).sort('-created').populate('user', 'name username image_url').exec(function(err, articles) {
+    Article.find({published : true}).sort('-updated').populate('user', 'name username image_url').exec(function(err, articles) {
         if (err) {
             res.render('error', {
                 status: 500
@@ -146,7 +146,7 @@ exports.allPublished = function(req, res) {
  * List of all Articles (published + unpublished) by a username
  */
 exports.allByUsername = function(username) {
-    return Article.find({username : username}).sort('-created').populate('user', 'name username image_url').exec(function(err, articles) {
+    return Article.find({username : username}).sort('-updated').populate('user', 'name username image_url').exec(function(err, articles) {
         if (err) {
             return 'Error in fetching the published articles';
         } else {
@@ -159,7 +159,7 @@ exports.allByUsername = function(username) {
  * List of only PUBLISHED Articles by a username
  */
 exports.publishedByUsername = function(username) {
-    return Article.find({username : username, published : true}).sort('-created').populate('user', 'name username image_url').exec(function(err, articles) {
+    return Article.find({username : username, published : true}).sort('-updated').populate('user', 'name username image_url').exec(function(err, articles) {
         if (err) {
             return 'Error in fetching the published articles';
         } else {
@@ -172,7 +172,7 @@ exports.publishedByUsername = function(username) {
  * List of all Articles (published + unpublished)
  */
 exports.all = function(req, res) {
-    Article.find().sort('-created').populate('user', 'name username image_url').exec(function(err, articles) {
+    Article.find().sort('-updated').populate('user', 'name username image_url').exec(function(err, articles) {
         if (err) {
             res.render('error', {
                 status: 500
