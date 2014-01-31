@@ -1,20 +1,25 @@
 <div class="all-block container">
-    <div class="authorItem row">
-        <img class="authorTitleImg" ng-src="{{author.user.image_url}}"/>
-        <h2 class="authorTitle">{{author.user.name}}</h2>
-    </div>
+    <div data-ng-hide="errored">
+        <div class="authorItem row">
+            <img class="authorTitleImg" ng-src="{{author.user.image_url}}"/>
+            <h2 class="authorTitle">{{author.user.name}}</h2>
+        </div>
 
-    <div class="articleItem row" ng-class="{false:'articleDraftItem', true:''}[article.published]" data-ng-repeat="article in author.articles">
-        <div class="articleItemTitle pull-left" class="">
-            <a data-ng-if="!article.published" data-ng-href="#!/articles/{{article._id}}/edit">{{article.title}}</a>
-            <a data-ng-if="article.published" data-ng-href="#!/articles/{{article._id}}">{{article.title}}</a>
-            <div class="articleItemStatus" data-ng-if="!article.published"><em>Draft</em> : Click to edit</div>
+        <div class="articleItem row" ng-class="{false:'articleDraftItem', true:''}[article.published]" data-ng-repeat="article in author.articles">
+            <div class="articleItemTitle pull-left" class="">
+                <a data-ng-if="!article.published" data-ng-href="#!/articles/{{article._id}}/edit">{{article.title}}</a>
+                <a data-ng-if="article.published" data-ng-href="#!/articles/{{article._id}}">{{article.title}}</a>
+                <div class="articleItemStatus" data-ng-if="!article.published"><em>Draft</em> : Click to edit</div>
+            </div>
+            <div class="articleItemContent pull-left" data-ng-bind-html="article.content | truncate:true:200 | unsafe"></div>
+            <div class="articleItemAuthor pull-left">
+                <a href="/#!users/{{article.user.username}}"><img class="articleItemAuthorImg" ng-src="{{article.user.image_url}}"/></a>
+                <!--<span class="clearfix articleItemAuthor" >-by <a href="/#!users/{{article.user.username}}">{{article.user.name}}</a></span>-->
+                <span class="clearfix articleItemDate"> {{article.created | fromNow}}</span>
+            </div>
         </div>
-        <div class="articleItemContent pull-left" data-ng-bind-html="article.content | truncate:true:200 | unsafe"></div>
-        <div class="articleItemAuthor pull-left">
-            <a href="/#!users/{{article.user.username}}"><img class="articleItemAuthorImg" ng-src="{{article.user.image_url}}"/></a>
-            <!--<span class="clearfix articleItemAuthor" >-by <a href="/#!users/{{article.user.username}}">{{article.user.name}}</a></span>-->
-            <span class="clearfix articleItemDate"> {{article.created | fromNow}}</span>
-        </div>
+    </div>
+    <div data-ng-show="errored" id="errorBox">
+        <h3>{{errorMsg}}</h3>
     </div>
 </div>

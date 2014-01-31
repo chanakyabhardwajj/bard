@@ -13,10 +13,17 @@ var mongoose = require('mongoose'),
  */
 exports.article = function(req, res, next, id) {
     Article.load(id, function(err, article) {
-        if (err) return next(err);
-        if (!article) return next(new Error('Failed to load article ' + id));
-        req.article = article;
-        next();
+        if (err) {
+            res.status(404).send('Could not find this article ...');
+        }
+        else if (!article) {
+            res.status(404).send('Could not find this article ...');
+        }
+        else{
+            req.article = article;
+            next();
+        }
+
     });
 };
 
@@ -83,21 +90,26 @@ exports.destroy = function(req, res) {
  */
 exports.show = function(req, res) {
     var article = req.article;
-    if(article.published){
-        res.jsonp(req.article);
-    }
-    else{
-        if(req.user){
-            if(article.user.id === req.user.id){
-                res.jsonp(req.article);
-            }
-            else{
-                res.status(404).send('You are not authorised to see this article ...');
-            }
+    if(article){
+        if(article.published){
+            res.jsonp(req.article);
         }
         else{
-            res.status(404).send('Please log in to see this content ...');
+            if(req.user){
+                if(article.user.id === req.user.id){
+                    res.jsonp(req.article);
+                }
+                else{
+                    res.status(404).send('You are not authorised to see this article ...');
+                }
+            }
+            else{
+                res.status(404).send('Please log in to see this content ...');
+            }
         }
+    }
+    else{
+        res.status(404).send('Could not find this article ...');
     }
 };
 

@@ -21,8 +21,8 @@ String.prototype.rightChars = function (n) {
             highlightEverything : true,
             typerDataAttr : 'data-typer-targets',
             typerInterval : 3000,
-            highlightColor : '#32899A', // set to null if not customized
-            textColor : null, // set to null if not customized
+            highlightColor : 'rgba(20,144,119,0.4)', // set to null if not customized
+            textColor : '#1abc9c', // set to null if not customized
             initialDelay : 2000,
             typerIntervalRef : null,
             onDoneTyping      : null

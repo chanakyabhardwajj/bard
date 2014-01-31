@@ -86,21 +86,26 @@ exports.create = function(req, res, next) {
 exports.getDetailsByName = function(req, res) {
     var reqUsername = req.params.username;
     User.findOne({username: reqUsername}).exec().then(function(reqUser){
-        if(req.user && req.user.username === reqUsername){
-            articles.allByUsername(reqUsername).then(function(articles){
-                res.jsonp({
-                    user : reqUser,
-                    articles : articles
+        if(reqUser){
+            if(req.user && req.user.username === reqUsername){
+                articles.allByUsername(reqUsername).then(function(articles){
+                    res.jsonp({
+                        user : reqUser,
+                        articles : articles
+                    });
                 });
-            });
+            }
+            else{
+                articles.publishedByUsername(reqUsername).onResolve(function(err, articles){
+                    res.jsonp({
+                        user : reqUser,
+                        articles : articles
+                    });
+                });
+            }
         }
         else{
-            articles.publishedByUsername(reqUsername).onResolve(function(err, articles){
-                res.jsonp({
-                    user : reqUser,
-                    articles : articles
-                });
-            });
+            res.status(404).send('Oops! This person is not here ...');
         }
 
     });

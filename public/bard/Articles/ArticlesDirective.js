@@ -20,10 +20,9 @@ angular.module('bard.Articles').
                     var html = element.html();
                     // When we clear the content editable the browser leaves a <br> behind
                     // If strip-br attribute is provided then we strip this out
-                    if( attrs.stripBr && html === '<br>') {
-                        html = '';
+                    if( attrs.stripBr && (html === '<br>') || angular.element(element).text() === '') {
+                        angular.element(element).html('');
                     }
-
                     ngModel.$setViewValue(html);
                 }
 
@@ -45,14 +44,5 @@ angular.module('bard.Articles').
             for (var k in attributes) {
                 bindKey(k, scope, element, attributes);
             }
-        };
-    })
-    .directive('backImg', function(){
-        return function(scope, element, attrs){
-            var url = attrs.backImg;
-            element.css({
-                'background-image': 'url(' + url +')',
-                'background-size' : 'cover'
-            });
         };
     });

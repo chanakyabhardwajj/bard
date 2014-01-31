@@ -1,29 +1,3 @@
-<script type="text/ng-template" id="shortcutModal.html">
-    <div class="modal-header">
-        <div class="modal-header-title">keyboard shortcuts</div>
-        <div class="modal-header-subtitle">
-            bard supports all the common features of a rich text editor.
-            it means you can style your content as you like.
-        </div>
-    </div>
-    <div class="modal-body">
-        <table>
-            <tr><td class="commandKey">Tab : </td><td class="command"> shift right </td></tr>
-            <tr><td class="commandKey">Shift + Tab : </td><td class="command"> shift left </td></tr>
-            <tr><td class="commandKey">Command/Ctrl + z : </td><td class="command"> undo </td></tr>
-            <tr><td class="commandKey">Command/Ctrl + Shift + z : </td><td class="command"> redo </td></tr>
-            <tr><td class="commandKey">Command/Ctrl + 1 : </td><td class="command"> H1 </td></tr>
-            <tr><td class="commandKey">Command/Ctrl + 2 : </td><td class="command"> H2 </td></tr>
-            <tr><td class="commandKey">Command/Ctrl + 0 : </td><td class="command"> remove formatting </td></tr>
-            <tr><td class="commandKey">Command/Ctrl + b : </td><td class="command"> bold </td></tr>
-            <tr><td class="commandKey">Command/Ctrl + u : </td><td class="command"> underline </td></tr>
-            <tr><td class="commandKey">Command/Ctrl + i : </td><td class="command"> italic </td></tr>
-            <tr><td class="commandKey">Command/Ctrl + Shift + a : </td><td class="command"> justify left </td></tr>
-            <tr><td class="commandKey">Command/Ctrl + Shift + s : </td><td class="command"> justify center </td></tr>
-            <tr><td class="commandKey">Command/Ctrl + Shift + d : </td><td class="command"> justify right </td></tr>
-        </table>
-    </div>
-</script>
 <section class="container well-lg">
     <div data-ng-show="userStatus.authenticated">
         <div id="poemForm">
@@ -31,15 +5,15 @@
                 <input type="text" class="mousetrap" data-ng-model="title" id="title" placeholder="title" required autocomplete="off">
                 <span class="pull-right articleStatusBox">
                     <span class="pull-left">
-                        <div class="pull-left publishIcon" ng-click="create(true)">Publish</div>
-                        <div class="pull-left saveIcon" ng-click="create(false)">Save</div>
+                        <div class="pull-left publishIcon" ng-class="{true:'', false:'disabled'}[!!content && !!title]" ng-click="create(true)">Publish</div>
+                        <div class="pull-left saveIcon" ng-class="{true:'', false:'disabled'}[!!content && !!title]" ng-click="create(false)">Save</div>
                         <div class="pull-left deleteIcon"><a href="/">Delete</a></div>
                     </span>
                 </span>
             </div>
 
             <div class="editableDiv mousetrap" placeholder = "say what you feel like.." data-ng-model="content" id="content" contenteditable required strip-br="true" ng-paste="pasted($event)" keypress="shortcuts"></div>
-            <input type="text" class="mousetrap" data-ng-model="subtitle" id="subtitle" placeholder="something about this piece.." required>
+            <input type="text" class="mousetrap" data-ng-model="subtitle" id="subtitle" placeholder="say something about this piece.." required>
             <i id="gearIcon" class="fa fa-gear" ng-click="openModal()"></i>
         </div>
     </div>

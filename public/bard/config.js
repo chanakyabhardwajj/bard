@@ -4,19 +4,6 @@
 angular.module('bard').config(['$routeProvider',
     function($routeProvider) {
         $routeProvider.
-            when('/articles', {
-                templateUrl: 'bard/Articles/AllArticles/AllArticlesView.html',
-                controller : 'AllArticlesController',
-                resolve : {
-                    resolvedArticles: function(ArticlesService, $q) {
-                        var deferred = $q.defer();
-                        ArticlesService.query(function(articles) {
-                            deferred.resolve(articles);
-                        });
-                        return deferred.promise;
-                    }
-                }
-            }).
             when('/articles/create', {
                 templateUrl: 'bard/Articles/NewArticle/NewArticleView.html',
                 controller : 'NewArticleController'
@@ -53,14 +40,14 @@ angular.module('bard').config(['$routeProvider',
                     }
                 }
             }).
-            when('/users/:username', {
-                templateUrl: 'bard/Authors/SeeAuthor/SeeAuthorView.html',
-                controller : 'SeeAuthorController',
+            when('/articles', {
+                templateUrl: 'bard/Articles/AllArticles/AllArticlesView.html',
+                controller : 'AllArticlesController',
                 resolve : {
-                    resolvedAuthor: function(AuthorsService, $q, $route) {
+                    resolvedArticles: function(ArticlesService, $q) {
                         var deferred = $q.defer();
-                        AuthorsService.get({username: $route.current.params.username}, function(author) {
-                            deferred.resolve(author);
+                        ArticlesService.query(function(articles) {
+                            deferred.resolve(articles);
                         });
                         return deferred.promise;
                     }
@@ -74,6 +61,21 @@ angular.module('bard').config(['$routeProvider',
                         var deferred = $q.defer();
                         ArticlesService.query(function(articles) {
                             deferred.resolve(articles);
+                        });
+                        return deferred.promise;
+                    }
+                }
+            }).
+            when('/users/:username', {
+                templateUrl: 'bard/Authors/SeeAuthor/SeeAuthorView.html',
+                controller : 'SeeAuthorController',
+                resolve : {
+                    authorPromise: function(AuthorsService, $q, $route) {
+                        var deferred = $q.defer();
+                        AuthorsService.get({username: $route.current.params.username}, function(author) {
+                            deferred.resolve({success:true, data:author});
+                        }, function(err){
+                            deferred.resolve({success:false, data:err});
                         });
                         return deferred.promise;
                     }
