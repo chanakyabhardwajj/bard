@@ -16,8 +16,8 @@ module.exports = {
         callbackURL: "http://thebard.herokuapp.com/auth/twitter/callback"
     },
     bufferapp: {
-        clientID: "52c9635211243a2774000162",
-        clientSecret: "b5ea1037c89f092e40876d29ec780465",
-        callbackURL: "http://localhost:3000/auth/bufferapp/callback"
+        clientID: "52ee66670a0e32576c0000c8",
+        clientSecret: "00aa9787e86cfd4a5af92bf3b424e512",
+        callbackURL: "http://thebard.herokuapp.com/auth/bufferapp/callback"
     }
 }
