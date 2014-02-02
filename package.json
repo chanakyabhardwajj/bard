@@ -56,7 +56,8 @@
     "grunt-contrib-watch": "~0.5.3",
     "karma-coverage": "~0.1.4",
     "karma": "~0.10.9",
-    "passport-bufferapp": "~0.1.1"
+    "passport-bufferapp": "~0.1.1",
+    "request": "~2.33.0"
   },
   "devDependencies": {
     "supertest": "latest",
