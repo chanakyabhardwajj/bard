@@ -4,11 +4,12 @@
             <div id="titleBox">
                 <input type="text" class="mousetrap" data-ng-model="article.title" id="title" placeholder="title" required autocomplete="off">
                 <span class="pull-right articleStatusBox">
-                    <span class="pull-left">
+                    <span class="pull-right">
                         <div class="pull-left publishIcon" ng-class="{true:'', false:'disabled'}[!!article.content && !!article.title]" ng-click="update(true)">Publish</div>
                         <div class="pull-left saveIcon" ng-class="{true:'', false:'disabled'}[!!article.content && !!article.title]" ng-click="update(false)">Save</div>
                         <div class="pull-left deleteIcon" ng-click="remove()">Delete</div>
                     </span>
+                    <div data-ng-show='!!windowMessage' class="windowMessage clearfix">{{windowMessage}}</div>
                 </span>
             </div>
 

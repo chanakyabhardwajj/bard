@@ -14,15 +14,10 @@ module.exports = {
         clientID: "lDr2ruEINuyOMGGVTRWQ",
         clientSecret: "SBUD7jDUOeg8jFUzEfMSSz0qCEydsdvT1kx1zezQw8",
         callbackURL: "http://localhost:3000/auth/twitter/callback"
-    }/*,
-    github: {
-        clientID: "APP_ID",
-        clientSecret: "APP_SECRET",
-        callbackURL: "http://localhost:3000/auth/github/callback"
     },
-    google: {
-        clientID: "APP_ID",
-        clientSecret: "APP_SECRET",
-        callbackURL: "http://localhost:3000/auth/google/callback"
-    }*/
-}
+    bufferapp: {
+        clientID: "52c9635211243a2774000162",
+        clientSecret: "b5ea1037c89f092e40876d29ec780465",
+        callbackURL: "http://localhost:3000/auth/bufferapp/callback"
+    }
+};

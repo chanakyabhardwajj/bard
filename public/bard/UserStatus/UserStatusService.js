@@ -1,16 +1,39 @@
 'use strict';
 
 //Global service for global variables
-angular.module('bard.UserStatus').factory('UserStatusService', [
-    function() {
-        var _this = this;
-        _this._data = {
-            user: window.user,
-            authenticated: !! window.user
-        };
-        return _this._data;
-    }
-])/*.factory('FlickrService', [
+angular.module('bard.UserStatus')
+    .factory('UserStatusService', [
+        function() {
+            var _this = this;
+            _this._data = {
+                user: window.user,
+                authenticated: !! window.user
+            };
+            return _this._data;
+        }
+    ])
+    .factory('BufferappService', [
+        '$resource', 'UserStatusService', function ($resource) {
+            return $resource('https://api.bufferapp.com/1/profiles.json?callback=JSON_CALLBACK',
+                {access_token : '@token'},
+                {
+                    fetch : {
+                        method : 'JSONP',
+                        isArray : false,
+                        callback: 'JSON_CALLBACK',
+                        transformResponse: function(data){
+                            var profilesIdArr = [];
+                            for(var i =0; i<data.length; i++){
+                                profilesIdArr.push(data[i].id);
+                            }
+                            return {profilesIdArr:profilesIdArr};
+                        }
+                    }
+                }
+            );
+        }
+    ]);
+        /*.factory('FlickrService', [
     '$resource', function ($resource) {
         return $resource('http://api.flickr.com/services/rest/', {
             user_id : '9669844@N02',
@@ -35,4 +58,4 @@ angular.module('bard.UserStatus').factory('UserStatusService', [
             }}
         });
     }
-])*/;
+])*/

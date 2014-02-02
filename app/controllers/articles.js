@@ -5,6 +5,7 @@
  */
 var mongoose = require('mongoose'),
     Article = mongoose.model('Article'),
+    request = require('request'),
     _ = require('lodash');
 
 
@@ -110,6 +111,52 @@ exports.show = function(req, res) {
     }
     else{
         res.status(404).send('Could not find this article ...');
+    }
+};
+
+/**
+ * Share an article on Buffer
+ */
+exports.share = function(req, res) {
+    var articleToBeShared = req.article;
+    var requestingUser = req.user;
+
+    if(requestingUser){
+        if(requestingUser.provider==='bufferapp'){
+            if(articleToBeShared){
+                if(articleToBeShared.published){
+                    var url = 'https://api.bufferapp.com/1/updates/create.json?access_token='+req.user.bufferapp.accessToken;
+                    var headers = {
+                        'content-Type' : 'application/x-www-form-urlencoded'
+                    };
+
+                    var form = { 'text' : articleToBeShared.title, 'media[link]' : 'http://thebard.herokuapp.com/#!/articles/' + articleToBeShared._id, 'profile_ids[]' : req.user.bufferapp.profile_ids[0]._id, 'now' : true };
+                    request.post({ url: url, form: form, headers: headers }, function (e, r, body) {
+                        var resp = JSON.parse(body);
+                        console.log(resp);
+                        if(resp.success){
+                            res.status(200).send(resp.message);
+                        }
+                        else{
+                            res.status(404).send(resp.message);
+                        }
+
+                    });
+                }
+                else{
+                    res.status(404).send('You are not authorised to see share this article yet...');
+                }
+            }
+            else{
+                res.status(404).send('Could not find this article ...');
+            }
+        }
+        else{
+            res.status(404).send('Please log in through your buffer account to share this article ...');
+        }
+    }
+    else{
+        res.status(404).send('Please log in to share this content ...');
     }
 };
 

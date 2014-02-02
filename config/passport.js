@@ -3,7 +3,9 @@
 var mongoose = require('mongoose'),
     TwitterStrategy = require('passport-twitter').Strategy,
     FacebookStrategy = require('passport-facebook').Strategy,
+    BufferAppStrategy = require('passport-bufferapp').Strategy,
     User = mongoose.model('User'),
+    request = require('request'),
     config = require('./config');
 
 
@@ -20,6 +22,60 @@ module.exports = function(passport) {
             done(err, user);
         });
     });
+
+    //Use bufferapp strategy
+    passport.use(new BufferAppStrategy({
+            clientID: config.bufferapp.clientID,
+            clientSecret: config.bufferapp.clientSecret,
+            callbackURL:config.bufferapp.callbackURL
+        },
+        function(accessToken, refreshToken, profile, done) {
+            User.findOne({'bufferapp.id': profile.id}, function(err, user) {
+                if (err) {
+                    return done(err);
+                }
+                if (!user) {
+                    profile._json.accessToken = accessToken;
+                    profile._json.profile_ids = [];
+                    user = new User({
+                        name: profile._json.name,
+                        username: profile._json.name,
+                        provider: 'bufferapp',
+                        bufferapp: profile._json,
+                        image_url : "https://dl.dropboxusercontent.com/u/11652684/bardData/anonymous.png"
+                    });
+
+                    request.get('https://api.bufferapp.com/1/profiles.json?access_token='+accessToken, function (e, r, body) {
+                        user.bufferapp.profile_ids = JSON.parse(body);
+                        if(user.bufferapp.profile_ids.length>0 && user.bufferapp.profile_ids[0].avatar){
+                            user.image_url = user.bufferapp.profile_ids[0].avatar;
+                        }
+
+                        user.save(function(err) {
+                            if (err) console.log(err);
+                            return done(err, user);
+                        });
+                    });
+                }
+                else {
+                    user.set('bufferapp.accessToken', accessToken);
+                    request.get('https://api.bufferapp.com/1/profiles.json?access_token='+accessToken, function (e, r, body) {
+                        user.set('bufferapp.profile_ids', JSON.parse(body));
+                        if(user.bufferapp.profile_ids.length>0 && user.bufferapp.profile_ids[0].avatar){
+                            user.image_url = user.bufferapp.profile_ids[0].avatar;
+                        }
+
+                        user.save(function (err) {
+                            if(!err) {
+                                return done(err, user);
+                            }
+                        });
+                    });
+
+                }
+            });
+        }
+    ));
 
     //Use twitter strategy
     passport.use(new TwitterStrategy({

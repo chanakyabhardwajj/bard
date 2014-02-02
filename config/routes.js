@@ -15,23 +15,32 @@ module.exports = function(app, passport, auth) {
         failureFlash: true
     }), users.session);
 
+    //Setting the buffer oauth routes
+    app.get('/auth/bufferapp', passport.authenticate('bufferapp', {
+        failureRedirect: '/'
+    }), users.signin);
+
+    app.get('/auth/bufferapp/callback', passport.authenticate('bufferapp', {
+        failureRedirect: '/'
+    }), users.authCallback);
+
     //Setting the facebook oauth routes
     app.get('/auth/facebook', passport.authenticate('facebook', {
         scope: ['email', 'user_about_me'],
-        failureRedirect: '/signin'
+        failureRedirect: '/'
     }), users.signin);
 
     app.get('/auth/facebook/callback', passport.authenticate('facebook', {
-        failureRedirect: '/signin'
+        failureRedirect: '/'
     }), users.authCallback);
 
     //Setting the twitter oauth routes
     app.get('/auth/twitter', passport.authenticate('twitter', {
-        failureRedirect: '/signin'
+        failureRedirect: '/'
     }), users.signin);
 
     app.get('/auth/twitter/callback', passport.authenticate('twitter', {
-        failureRedirect: '/signin'
+        failureRedirect: '/'
     }), users.authCallback);
 
     //Finish with setting up the username param
@@ -43,6 +52,7 @@ module.exports = function(app, passport, auth) {
     app.get('/articles', articles.allPublished);
     app.post('/articles', auth.requiresLogin, articles.create);
     app.get('/articles/:articleId', articles.show);
+    app.post('/share/:articleId', articles.share);
     app.put('/articles/:articleId', auth.requiresLogin, auth.article.hasAuthorization, articles.update);
     app.del('/articles/:articleId', auth.requiresLogin, auth.article.hasAuthorization, articles.destroy);
 

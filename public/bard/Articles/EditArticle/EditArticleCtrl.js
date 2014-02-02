@@ -3,6 +3,7 @@
 angular.module('bard.Articles').controller('EditArticleController', ['$scope', '$routeParams', '$location', '$timeout', '$sanitize', '$modal', 'UserStatusService', 'ArticlesService', 'KeyShortcutsService', 'articlePromise', function ($scope, $routeParams, $location, $timeout, $sanitize, $modal, UserStatusService, ArticlesService, KeyShortcutsService, articlePromise) {
     $scope.userStatus = UserStatusService;
     $scope.shortcuts = KeyShortcutsService;
+    $scope.windowMessage = '';
 
     //Check if the user is logged-in!
     if ($scope.userStatus.authenticated) {
@@ -27,13 +28,18 @@ angular.module('bard.Articles').controller('EditArticleController', ['$scope', '
                 };
 
                 $scope.update = function (toPublish) {
+                    $scope.windowMessage = 'saving your changes...';
                     if(!$scope.article.title){
                         $scope.titleError = true;
+                        $scope.windowMessage = 'you forgot to add the title';
+                        $timeout(function(){$scope.windowMessage=null;}, 3000);
                         return;
                     }
 
                     if(!$scope.article.content){
                         $scope.contentError = true;
+                        $scope.windowMessage = 'please add some content';
+                        $timeout(function(){$scope.windowMessage=null;}, 3000);
                         return;
                     }
                     var article = $scope.article;
@@ -42,6 +48,7 @@ angular.module('bard.Articles').controller('EditArticleController', ['$scope', '
                     }
                     article.updated = new Date().getTime();
                     article.$update(function () {
+                        $timeout(function(){$scope.windowMessage=null;}, 2000);
                         $location.path('articles/' + article._id);
                     });
                 };
