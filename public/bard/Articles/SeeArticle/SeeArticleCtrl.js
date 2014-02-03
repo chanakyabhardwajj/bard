@@ -8,20 +8,22 @@ angular.module('bard.Articles').controller('SeeArticleController', ['$scope', '$
         $scope.article = articlePromise.data;
         $scope.remove = function(article) {
             if (article) {
-                article.$remove();
-                for (var i in $scope.articles) {
-                    if ($scope.articles[i] === article) {
-                        $scope.articles.splice(i, 1);
+                article.$remove(function(){
+                    for (var i in $scope.articles) {
+                        if ($scope.articles[i] === article) {
+                            $scope.articles.splice(i, 1);
+                        }
                     }
-                }
+                });
             }
             else {
-                $scope.article.$remove();
-                $location.path('/');
+                $scope.article.$remove(function(){
+                    $location.path('/');
+                });
             }
         };
 
-        if($scope.userStatus.user.provider==='bufferapp'){
+        if($scope.userStatus.authenticated && $scope.userStatus.user  && $scope.userStatus.user.provider==='bufferapp'){
             $scope.bufferStatus = null;
             $scope.share = function(){
                 $scope.windowMessage = 'sharing through buffer .. hang on';

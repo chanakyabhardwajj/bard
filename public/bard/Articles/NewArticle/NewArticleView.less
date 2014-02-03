@@ -19,6 +19,7 @@ Styles for the NEW partial
     width: 100%;
     font-size: 24px;
     margin-bottom:15px;
+    clear: both;
   }
 
   #titleBox {
@@ -37,8 +38,26 @@ Styles for the NEW partial
 
       .publishIcon {
         border-bottom: 2px solid #1abc9c !important;
-        margin: 0 10px;
+        margin: 0;
         cursor: pointer;
+
+        label {
+          display: block;
+          padding-left: 15px;
+          text-indent: -15px;
+          font-weight: 300;
+          margin: 0;
+        }
+        input {
+          width: 13px;
+          height: 13px;
+          padding: 0;
+          margin:0 0 2px 0;
+          vertical-align: bottom;
+          position: relative;
+          top: -1px;
+          *overflow: hidden;
+        }
       }
 
       .editIcon {
@@ -99,14 +118,17 @@ Styles for the NEW partial
     font-size: 24px;
   }
 
-  #gearIcon{
-    float:right;
-    color:#999;
-    position:relative;
-    top:-40px;
-    font-size:20px;
+  .keyboardIcon{
+    background: url('../img/icons.png') no-repeat;
+    display:inline-block;
+    background-position: -100px 0;
+    width: 30px;
+    height: 30px;
+    float: right;
     cursor:pointer;
   }
+
+
 }
 
 .editableDiv[placeholder]:empty:before {

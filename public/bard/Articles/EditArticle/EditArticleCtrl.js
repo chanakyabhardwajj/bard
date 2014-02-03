@@ -55,17 +55,18 @@ angular.module('bard.Articles').controller('EditArticleController', ['$scope', '
 
                 $scope.remove = function (article) {
                     if (article) {
-                        article.$remove();
-
-                        for (var i in $scope.articles) {
-                            if ($scope.articles[i] === article) {
-                                $scope.articles.splice(i, 1);
+                        article.$remove(function(){
+                            for (var i in $scope.articles) {
+                                if ($scope.articles[i] === article) {
+                                    $scope.articles.splice(i, 1);
+                                }
                             }
-                        }
+                        });
                     }
                     else {
-                        $scope.article.$remove();
-                        $location.path('/');
+                        $scope.article.$remove(function(){
+                            $location.path('/');
+                        });
                     }
                 };
             }

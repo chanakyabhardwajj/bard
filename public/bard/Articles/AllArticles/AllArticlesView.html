@@ -4,8 +4,7 @@
         <div class="articleItemContent pull-left" data-ng-bind-html="article.content | truncate:true:200 | unsafe"></div>
         <div class="articleItemAuthor pull-left">
             <a href="/#!users/{{article.user.username}}"><img class="articleItemAuthorImg" ng-src="{{article.user.image_url}}"/></a>
-            <!--<span class="clearfix articleItemAuthor" >-by <a href="/#!users/{{article.user.username}}">{{article.user.name}}</a></span>-->
-            <span class="clearfix articleItemDate"> {{article.updated | fromNow}}</span>
+            <span class="clearfix articleItemDate"> {{article.created | fromNow}}</span>
         </div>
     </div>
 </div>

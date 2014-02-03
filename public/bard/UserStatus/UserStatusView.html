@@ -1,5 +1,4 @@
 <div data-ng-controller="UserStatusController" class="">
-    <!--<div class="coverPic"></div>-->
     <div class="headerPanel">
         <h1 class="title"><a href="/">bard</a></h1>
         <div class="sideBox inline">
@@ -13,18 +12,16 @@
                     <span typer data-typer-targets="say something .., express something ..">write something ..</span><div class="blink"> </div>
                 </div>
                 <div class="loginBox inline pull-left">
-                    <span class="socialIcon pull-left"><a href="/auth/facebook"><i class="fa fa-facebook"></i></a></span>
-                    <span class="socialIcon pull-left"><a href="/auth/twitter"><i class="fa fa-twitter"></i></a></span>
-                    <span class="socialIcon bufferLogo pull-left"><a href="/auth/bufferapp"><img src="../../img/bufferapp.jpg"></a></span>
+                    <span class="socialIcon pull-left"><a href="/auth/facebook"><span class="facebookIcon"></span></a></span>
+                    <span class="socialIcon pull-left"><a href="/auth/twitter"><span class="twitterIcon"></span></a></span>
+                    <span class="socialIcon pull-left"><a href="/auth/bufferapp"><span class="bufferappIcon"></span></a></span>
                 </div>
             </div>
         </div>
 
         <div class="pull-right" data-ng-show="{{userStatus.authenticated}}"><a href="/signout">Log Out</a></div>
         <div class="pull-right introBox" data-ng-hide="{{userStatus.authenticated}}">
-            a <strong>simple</strong> blogging platform
-            <br>
-            no frills/no images/just you and your thoughts
+            a <strong>simple writing</strong> platform<br>no nonsense / just you and your thoughts
         </div>
     </div>
 </div>

@@ -13,7 +13,7 @@ angular.module('bard.Articles').controller('NewArticleController', ['$scope', '$
     };
 
     $scope.create = function(toPublish) {
-        $scope.windowMessage = (toPublish ? 'publishing' : 'saving') +  'your article...';
+        $scope.windowMessage = (toPublish ? 'publishing' : 'saving') +  ' your article...';
         if(!this.title){
             $scope.titleError = true;
             $scope.windowMessage = 'you forgot to add the title';
