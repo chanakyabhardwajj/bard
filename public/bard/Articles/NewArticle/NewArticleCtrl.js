@@ -39,7 +39,7 @@ angular.module('bard.Articles').controller('NewArticleController', ['$scope', '$
                 $location.path('/');
             }
             else{
-                $location.path('articles/' + response._id);
+                $location.path('articles/' + response._id + '/edit');
             }
             $timeout(function(){$scope.windowMessage=null;}, 2000);
         });

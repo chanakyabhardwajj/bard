@@ -5,14 +5,12 @@
                 <input type="text" class="mousetrap" data-ng-model="title" id="title" placeholder="title" required autocomplete="off">
                 <span class="pull-right articleStatusBox">
                     <span class="pull-right">
-                        <!--<div class="pull-left publishIcon" ng-class="{true:'', false:'disabled'}[!!content && !!title]">
-                            <label><input type="checkbox" ng-model="toPublish"/> Publish?</label>
-                        </div>-->
+                        <div data-ng-show='!!windowMessage' class="windowMessage pull-left">{{windowMessage}}</div>
                         <div class="pull-left publishIcon" ng-class="{true:'', false:'disabled'}[!!content && !!title]" ng-click="create(true)">Publish</div>
                         <div class="pull-left saveIcon" ng-class="{true:'', false:'disabled'}[!!content && !!title]" ng-click="create(false)">Save</div>
                         <div class="pull-left deleteIcon"><a href="/">Delete</a></div>
                     </span>
-                    <div data-ng-show='!!windowMessage' class="windowMessage clearfix">{{windowMessage}}</div>
+
                 </span>
             </div>
 

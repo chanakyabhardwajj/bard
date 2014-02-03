@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('bard.Articles').controller('EditArticleController', ['$scope', '$routeParams', '$location', '$timeout', '$sanitize', '$modal', 'UserStatusService', 'ArticlesService', 'KeyShortcutsService', 'articlePromise', function ($scope, $routeParams, $location, $timeout, $sanitize, $modal, UserStatusService, ArticlesService, KeyShortcutsService, articlePromise) {
+angular.module('bard.Articles').controller('EditArticleController', ['$scope', '$route','$routeParams', '$location', '$timeout', '$sanitize', '$modal', 'UserStatusService', 'ArticlesService', 'KeyShortcutsService', 'articlePromise', function ($scope, $route, $routeParams, $location, $timeout, $sanitize, $modal, UserStatusService, ArticlesService, KeyShortcutsService, articlePromise) {
     $scope.userStatus = UserStatusService;
     $scope.shortcuts = KeyShortcutsService;
     $scope.windowMessage = '';
@@ -27,7 +27,33 @@ angular.module('bard.Articles').controller('EditArticleController', ['$scope', '
                     $modal.open({templateUrl : 'shortcutModal.html'});
                 };
 
-                $scope.update = function (toPublish) {
+                $scope.publishToggle = function(){
+                    if(!$scope.article.title){
+                        return;
+                    }
+
+                    if(!$scope.article.content){
+                        return;
+                    }
+
+                    $scope.windowMessage = 'saving your changes...';
+                    var article = $scope.article;
+                    article.published = !article.published;
+                    article.updated = new Date().getTime();
+                    article.$update(function () {
+                        /*if(article.published){
+                            $scope.windowMessage = 'published..';
+                            $timeout(function(){$scope.windowMessage=null;}, 2000);
+                        }
+                        else{
+                            $scope.windowMessage = 'unpublished..';
+                            $timeout(function(){$scope.windowMessage=null;}, 2000);
+                        }*/
+                        $route.reload();
+                    });
+                };
+
+                $scope.update = function () {
                     $scope.windowMessage = 'saving your changes...';
                     if(!$scope.article.title){
                         $scope.titleError = true;
@@ -43,13 +69,11 @@ angular.module('bard.Articles').controller('EditArticleController', ['$scope', '
                         return;
                     }
                     var article = $scope.article;
-                    if (toPublish) {
-                        article.published = true;
-                    }
                     article.updated = new Date().getTime();
                     article.$update(function () {
-                        $timeout(function(){$scope.windowMessage=null;}, 2000);
-                        $location.path('articles/' + article._id);
+                        /*$scope.windowMessage = 'saved..';
+                        $timeout(function(){$scope.windowMessage=null;}, 2000);*/
+                        $route.reload();
                     });
                 };
 
