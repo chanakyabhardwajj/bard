@@ -46,8 +46,21 @@ Modal Styles
   width: 400px;
   margin: auto;
   background: #fff;
-  height: 500px;
+  max-height: 500px;
   font-weight:300;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+
+  @media(max-width:500px){
+    position: fixed;
+    top: 3%;
+    right: 3%;
+    left: 3%;
+    width: auto;
+    margin: 0;
+    font-size: 13px;
+    max-height: 400px;
+  }
 
   .modal-header{
     padding-bottom:5px;
@@ -73,6 +86,9 @@ Modal Styles
         font-weight:bold;
         float:right;
       }
+    }
+    @media(max-width:500px){
+      height: 60%;
     }
   }
 }
@@ -173,11 +189,11 @@ body {
 
 .contentDown{
   padding-top: 100px;
-  @media(max-width:767px){
+  @media(max-width:500px){
     padding-top: 150px;
   }
   @media(min-width:768px){
-    padding-top: 135px;
+    padding-top: 100px;
   }
   @media(min-width:992px){
     padding-top: 100px;
