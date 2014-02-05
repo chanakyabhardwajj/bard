@@ -133,7 +133,6 @@ exports.share = function(req, res) {
                     var form = { 'text' : articleToBeShared.title, 'media[link]' : 'http://thebard.herokuapp.com/#!/articles/' + articleToBeShared._id, 'profile_ids[]' : req.user.bufferapp.profile_ids[0]._id, 'now' : true };
                     request.post({ url: url, form: form, headers: headers }, function (e, r, body) {
                         var resp = JSON.parse(body);
-                        console.log(resp);
                         if(resp.success){
                             res.status(200).send(resp.message);
                         }

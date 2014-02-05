@@ -1,4 +1,4 @@
-<div class="all-block container">
+<div class="all-block container"  data-ng-class="{true:'', false:'contentDown'}[userStatus.authenticated]">
     <div data-ng-hide="errored">
         <div class="authorItem row">
             <img class="authorTitleImg" ng-src="{{author.user.image_url}}"/>

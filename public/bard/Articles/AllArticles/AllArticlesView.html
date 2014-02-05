@@ -1,4 +1,4 @@
-<div class="all-block text-center container">
+<div class="all-block text-center container" data-ng-class="{true:'', false:'contentDown'}[userStatus.authenticated]">
     <div class="articleItem row" data-ng-repeat="article in articles">
         <div class="articleItemTitle pull-left" class=""><a data-ng-href="#!/articles/{{article._id}}">{{article.title}}</a></div>
         <div class="articleItemContent pull-left" data-ng-bind-html="article.content | truncate:true:200 | unsafe"></div>

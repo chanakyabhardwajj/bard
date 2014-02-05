@@ -1,5 +1,5 @@
 <div data-ng-controller="UserStatusController" class="">
-    <div class="headerPanel">
+    <div class="headerPanel" ng-class="{true : '', false:'headerPanelFixed'}[userStatus.authenticated]">
         <h1 class="title"><a href="/">bard</a></h1>
         <div class="sideBox inline">
             <div class="controlBox inline pull-left" data-ng-show="{{userStatus.authenticated}}">

@@ -20,27 +20,40 @@ Styles for the NEW partial
     font-size: 24px;
     margin-bottom:15px;
     clear: both;
+    @media(max-width:767px){
+      margin-top: 50px;
+    }
+
   }
 
   #titleBox {
     .articleStatusBox {
       padding: 10px 10px;
       font-size: 14px;
+      float:right;
+
+      span{
+        float:right;
+      }
+
       small {
         margin: 0 10px;
       }
 
       .windowMessage{
+        float: left;
         margin-right:10px;
       }
 
       .saveIcon {
+        float: left;
         border-bottom: 2px solid #4DBCD1 !important;
         margin: 0 10px;
         cursor: pointer;
       }
 
       .publishIcon {
+        float: left;
         border-bottom: 2px solid #1abc9c !important;
         margin: 0;
         cursor: pointer;
@@ -64,12 +77,14 @@ Styles for the NEW partial
       }
 
       .editIcon {
+        float: left;
         border-bottom: 2px solid #1abc9c !important;
         margin: 0 10px;
         cursor: pointer;
       }
 
       .deleteIcon {
+        float: left;
         border-bottom: 2px solid red !important;
         margin: 0 10px;
         cursor: pointer;
@@ -94,9 +109,30 @@ Styles for the NEW partial
       }
 
       .disabled{
+        float: left;
         opacity:0.4;
         border:none !important;
         cursor: default;
+      }
+
+      @media(max-width:767px){
+        float:none;
+        display:block;
+        clear:both;
+        text-align: right;
+        padding:0px;
+
+        span{
+          float: right;
+          display:block;
+          clear:both;
+        }
+        small, .windowMessage, .saveIcon, .publishIcon, .editIcon, .deleteIcon, .bufferIcon,{
+          float: right;
+          margin:20px 0 0 0;
+          display:block;
+          clear:both;
+        }
       }
     }
   }
