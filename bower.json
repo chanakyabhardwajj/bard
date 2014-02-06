@@ -11,10 +11,8 @@
     "bootstrap": "3.0.3",
     "angular-bootstrap": "0.7.0",
     "angular-ui-utils": "0.0.4",
-    "font-awesome": "~4.0.3",
     "momentjs": "~2.5.0",
     "angular-moment": "~0.6.0",
-    "skrollr": "~0.6.21",
     "angular-animate": "~1.2.10"
   },
   "devDependencies": {}

@@ -3,8 +3,8 @@
         <div id="poemForm">
             <div id="titleBox">
                 <input type="text" class="mousetrap" data-ng-model="article.title" id="title" placeholder="title" required autocomplete="off">
-                <span class="pull-right articleStatusBox">
-                    <span class="pull-right">
+                <span class="articleStatusBox">
+                    <span class="">
                         <div data-ng-show='!!windowMessage' class="windowMessage">{{windowMessage}}</div>
                         <div class="publishIcon" ng-class="{true:'', false:'disabled'}[!!article.content && !!article.title]"><input type="checkbox" data-ng-model="article.published" ng-click="publishToggle()"><label data-ng-show="article.published">Published! Click to unpublish ..</label><label data-ng-hide="article.published">Publish now!</label></div>
                         <div class="saveIcon" ng-class="{true:'', false:'disabled'}[!!article.content && !!article.title]" ng-click="update(false)">Save</div>

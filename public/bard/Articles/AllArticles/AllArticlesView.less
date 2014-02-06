@@ -4,6 +4,7 @@ Styles for the ALL partial
 
 .all-block{
   margin: auto;
+
   .articleItem{
     text-align: left;
     border-left:2px dashed #1abc9c;
@@ -26,7 +27,6 @@ Styles for the ALL partial
     @media(min-width:1200px){
       margin-left:60px;
     }
-    //background: rgba(220,220,220,0.8);
 
     .articleItemDate{
       font-size: 12px;
@@ -46,11 +46,10 @@ Styles for the ALL partial
       -moz-transition: all 0.2s ease;
       margin-bottom:5px;
       border-bottom:2px solid #fff;
-      @media(max-width:767px){
-        a{
-          word-wrap: break-word;
-        }
 
+      @media(max-width:500px){
+        font-size: 30px;
+        line-height: 30px;
       }
 
       .articleItemStatus{

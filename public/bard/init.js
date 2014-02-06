@@ -3,9 +3,14 @@ if( window.location.hash.length===0){
     window.location.hash = '#!';
 }
 
-else if(window.location.path !== '/'){
+else if(window.location.pathname !== '/'){
     window.location.path = '/';
     window.location.hash = '#!';
+}
+
+var loc = window.location.href;
+if (loc.indexOf('#') !== -1 &&  loc.indexOf('#!') === -1 ){
+    window.location.href = loc.replace('#', '#!');
 }
 
 angular.element(document).ready(function() {
@@ -15,7 +20,6 @@ angular.element(document).ready(function() {
     if( window.location.hash.length===0){
         window.location.hash = '#!';
     }
-
 
     //Then init the app
     angular.bootstrap(document, ['bard']);

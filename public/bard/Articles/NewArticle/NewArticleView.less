@@ -28,27 +28,24 @@ Styles for the NEW partial
 
   #titleBox {
     .articleStatusBox {
-      padding: 10px 10px;
+      padding: 10px 0px;
       font-size: 14px;
       float:right;
 
-      span{
-        float:right;
-      }
-
-      small {
-        margin: 0 10px;
-      }
-
       .windowMessage{
         float: left;
-        margin-right:10px;
+        margin-left:10px;
+      }
+
+      .publishStatusMessage{
+        float: left;
+        margin-left:10px;
       }
 
       .saveIcon {
         float: left;
         border-bottom: 2px solid #4DBCD1 !important;
-        margin: 0 10px;
+        margin-left:10px;
         cursor: pointer;
       }
 
@@ -79,32 +76,47 @@ Styles for the NEW partial
       .editIcon {
         float: left;
         border-bottom: 2px solid #1abc9c !important;
-        margin: 0 10px;
+        margin-left:10px;
         cursor: pointer;
       }
 
       .deleteIcon {
         float: left;
         border-bottom: 2px solid red !important;
-        margin: 0 10px;
+        margin-left:10px;
         cursor: pointer;
       }
 
-      .bufferIcon{
+      .fbShareIcon{
+        float: left;
+        border-bottom: 2px solid #4c66a4 !important;
+        margin-left:10px;
+        cursor: pointer;
+      }
+
+      .twitterShareIcon{
+        float: left;
+        border-bottom: 2px solid #55acee !important;
+        margin-left:10px;
+        cursor: pointer;
+      }
+
+      .bufferShareIcon{
+        float: left;
         border-bottom: 2px solid #000 !important;
-        margin: 0 10px;
+        margin-left:10px;
         cursor: pointer;
       }
 
       .bufferIconSuccess{
         border-bottom: 2px solid #1abc9c !important;
-        margin: 0 10px;
+        margin-left:10px;
         cursor: pointer;
       }
 
       .bufferIconError{
         border-bottom: 2px solid red !important;
-        margin: 0 10px;
+        margin-left:10px;
         cursor: pointer;
       }
 
@@ -121,13 +133,16 @@ Styles for the NEW partial
         clear:both;
         text-align: right;
         padding:0px;
+        /*position: relative;
+        top:-80px;*/
 
         span{
           float: right;
           display:block;
           clear:both;
         }
-        small, .windowMessage, .saveIcon, .publishIcon, .editIcon, .deleteIcon, .bufferIcon,{
+
+        .windowMessage, .publishStatusMessage, .saveIcon, .publishIcon, .editIcon, .deleteIcon, .bufferShareIcon, .fbShareIcon, .twitterShareIcon{
           float: right;
           margin:20px 0 0 0;
           display:block;
@@ -144,6 +159,11 @@ Styles for the NEW partial
     margin: 0;
     padding: 0;
     color: #242424;
+
+    @media(max-width:500px){
+      font-size: 30px;
+      line-height: 30px;
+    }
   }
 
   #subtitle {
@@ -166,8 +186,6 @@ Styles for the NEW partial
     float: right;
     cursor:pointer;
   }
-
-
 }
 
 .editableDiv[placeholder]:empty:before {

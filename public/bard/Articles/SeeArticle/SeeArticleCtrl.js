@@ -3,7 +3,6 @@
 angular.module('bard.Articles').controller('SeeArticleController', ['$scope', '$http', '$routeParams', '$location', '$window', '$timeout', 'UserStatusService', 'ArticlesService', 'articlePromise', function ($scope, $http, $routeParams, $location, $window, $timeout, UserStatusService, ArticlesService, articlePromise) {
     $scope.userStatus = UserStatusService;
     $scope.windowMessage = '';
-
     if(articlePromise.success){
         $scope.article = articlePromise.data;
         $scope.remove = function(article) {
@@ -22,6 +21,13 @@ angular.module('bard.Articles').controller('SeeArticleController', ['$scope', '$
                 });
             }
         };
+
+        /*$scope.postOnFB = function(){
+            window.open('https://www.facebook.com/sharer/sharer.php?app_id='+ window.fb_app_id +'&u=' + encodeURIComponent($window.location.href) + '&display=popup', 'targetWindow', 'toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=500,height=350');
+        };
+        $scope.tweet = function(){
+            window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent($scope.article.title) + '&url=' + encodeURIComponent($window.location.href), 'targetWindow', 'toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=500,height=350');
+        };*/
 
         if($scope.userStatus.authenticated && $scope.userStatus.user  && $scope.userStatus.user.provider==='bufferapp'){
             $scope.bufferStatus = null;

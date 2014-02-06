@@ -45,4 +45,34 @@ angular.module('bard.Articles').
                 bindKey(k, scope, element, attributes);
             }
         };
-    });
+    })
+    .directive('fbshare', [function() {
+        return {
+            restrict: 'A',
+            replace: false,
+            transclude: false,
+            scope: {
+                article: '=article'
+            },
+            link: function(scope, elem) {
+                elem.bind('click', function() {
+                    window.open('https://www.facebook.com/sharer/sharer.php?app_id='+ window.fb_app_id + '&description=' + scope.article.title + '&u=' + encodeURIComponent(window.location.href) + '&display=popup', 'targetWindow', 'toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=500,height=350');
+                });
+            }
+        };
+    }])
+    .directive('tweet', [function() {
+        return {
+            restrict: 'A',
+            replace: false,
+            transclude: false,
+            scope: {
+                article: '=article'
+            },
+            link: function(scope, elem) {
+                elem.bind('click', function() {
+                    window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(scope.article.title) + '&url=' + encodeURIComponent(window.location.href), 'targetWindow', 'toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=500,height=350');
+                });
+            }
+        };
+    }]);

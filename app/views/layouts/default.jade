@@ -5,4 +5,31 @@ html(lang='en', xmlns='http://www.w3.org/1999/xhtml', xmlns:fb='https://www.face
   .headerContainer(data-ng-include="'bard/UserStatus/UserStatusView.html'", data-role="navigation")
   div.content
     block content
+
+  if (process.env.NODE_ENV == 'development')
+      script(type="text/javascript").
+        window.fb_app_id = '1455157534697493';
+      #fb-root
+      script(type="text/javascript").
+        (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=1455157534697493";
+        fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+  if (process.env.NODE_ENV == 'production')
+      script(type="text/javascript").
+        window.fb_app_id = '621077091262153';
+      #fb-root
+      script(type="text/javascript").
+        (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=621077091262153";
+        fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
   include ../includes/foot
