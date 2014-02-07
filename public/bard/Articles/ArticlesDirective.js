@@ -46,17 +46,45 @@ angular.module('bard.Articles').
             }
         };
     })
-    .directive('fbshare', [function() {
+    .directive('fbshare', ['$timeout', function($timeout) {
         return {
             restrict: 'A',
-            replace: false,
-            transclude: false,
-            scope: {
-                article: '=article'
-            },
+            scope : false,
             link: function(scope, elem) {
+                console.log(scope);
                 elem.bind('click', function() {
-                    window.open('https://www.facebook.com/sharer/sharer.php?app_id='+ window.fb_app_id + '&description=' + scope.article.title + '&u=' + encodeURIComponent(window.location.href) + '&display=popup', 'targetWindow', 'toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=500,height=350');
+                    if(!window.FB){
+                        window.open('https://www.facebook.com/sharer/sharer.php?app_id='+ window.fb_app_id + '&description=' + scope.article.title + '&u=' + encodeURIComponent(window.location.href) + '&display=popup', 'targetWindow', 'toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=500,height=350');
+                    }
+                    else{
+                        scope.$apply(function () {
+                            scope.windowMessage = 'sharing on facebook...';
+                        });
+                        window.FB.ui({
+                                method: 'feed',
+                                name: scope.article.title,
+                                caption: 'bard - a simple way to write',
+                                description: (
+                                    scope.article.content
+                                ),
+                                link: window.location.href,
+                                picture: 'http://thebard.herokuapp.com/img/bard.jpg'
+                            },
+                            function(response) {
+                                if (response && response.post_id) {
+                                    scope.$apply(function () {
+                                        scope.windowMessage = 'shared on facebook!!';
+                                        $timeout(function(){scope.windowMessage='';}, 5000);
+                                    });
+                                } else {
+                                    scope.$apply(function () {
+                                        scope.windowMessage = 'could not share...try again?';
+                                        $timeout(function(){scope.windowMessage='';}, 5000);
+                                    });
+                                }
+                            }
+                        );
+                    }
                 });
             }
         };
@@ -64,11 +92,7 @@ angular.module('bard.Articles').
     .directive('tweet', [function() {
         return {
             restrict: 'A',
-            replace: false,
-            transclude: false,
-            scope: {
-                article: '=article'
-            },
+            scope : false,
             link: function(scope, elem) {
                 elem.bind('click', function() {
                     window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(scope.article.title) + '&url=' + encodeURIComponent(window.location.href), 'targetWindow', 'toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=500,height=350');

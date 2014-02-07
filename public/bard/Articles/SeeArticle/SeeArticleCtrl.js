@@ -22,13 +22,6 @@ angular.module('bard.Articles').controller('SeeArticleController', ['$scope', '$
             }
         };
 
-        /*$scope.postOnFB = function(){
-            window.open('https://www.facebook.com/sharer/sharer.php?app_id='+ window.fb_app_id +'&u=' + encodeURIComponent($window.location.href) + '&display=popup', 'targetWindow', 'toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=500,height=350');
-        };
-        $scope.tweet = function(){
-            window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent($scope.article.title) + '&url=' + encodeURIComponent($window.location.href), 'targetWindow', 'toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=500,height=350');
-        };*/
-
         if($scope.userStatus.authenticated && $scope.userStatus.user  && $scope.userStatus.user.provider==='bufferapp'){
             $scope.bufferStatus = null;
             $scope.share = function(){
@@ -37,11 +30,11 @@ angular.module('bard.Articles').controller('SeeArticleController', ['$scope', '$
                     $http.post('/share/' + $scope.article._id).then(function(resp){
                         $scope.bufferStatus = 'success';
                         $scope.windowMessage = resp.data;
-                        $timeout(function(){$scope.windowMessage=null;}, 5000);
+                        $timeout(function(){$scope.windowMessage='';}, 5000);
                     },function(err){
                         $scope.bufferStatus = 'error';
                         $scope.windowMessage = err.data;
-                        $timeout(function(){$scope.windowMessage=null;}, 5000);
+                        $timeout(function(){$scope.windowMessage='';}, 5000);
                     });
                 }
 

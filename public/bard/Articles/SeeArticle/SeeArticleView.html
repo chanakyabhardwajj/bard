@@ -5,7 +5,7 @@
                 <span class="articleTitleAuthorName">-by <a href="/#!users/{{article.user.username}}">{{article.user.name}}</a></span>
             </div>
             <span class="articleStatusBox">
-                <span data-ng-show='!!windowMessage' class="windowMessage">{{windowMessage}}</span>
+                <span class="windowMessage">{{windowMessage}}</span>
                 <span class="publishStatusMessage">
                     <small data-ng-show="article.published === false && userStatus.user._id === article.user._id">Draft saved {{article.updated | fromNow}}</small>
                     <small data-ng-show="article.published === true">Published {{article.updated | fromNow}}</small>
@@ -17,8 +17,8 @@
                 </span>
                 <span data-ng-show="article.published === true">
                     <span class="bufferShareIcon" ng-class="{'success' : 'bufferIconSuccess', 'error' : 'bufferIconError'}[bufferStatus]" data-ng-show="userStatus.user.provider === 'bufferapp'" ng-click="share()">Buffer</span>
-                    <span fbshare class="fbShareIcon" data-ng-hide="userStatus.user.provider === 'bufferapp'" article="article">share on facebook</span>
-                    <span tweet class="twitterShareIcon" data-ng-hide="userStatus.user.provider === 'bufferapp'" article="article">tweet</span>
+                    <span fbshare class="fbShareIcon" data-ng-hide="userStatus.user.provider === 'bufferapp'">share on facebook</span>
+                    <span tweet class="twitterShareIcon" data-ng-hide="userStatus.user.provider === 'bufferapp'">tweet</span>
                 </span>
             </span>
         </div>
