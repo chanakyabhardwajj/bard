@@ -19,8 +19,8 @@ angular.module('bard.Articles').controller('EditArticleController', ['$scope', '
                 },0);
 
                 $scope.pasted = function ($event) {
-                    $event.target.innerText = $event.target.innerText + $event.originalEvent.clipboardData.getData('text/plain');
                     $event.originalEvent.preventDefault();
+                    document.execCommand('inserttext', false, $event.originalEvent.clipboardData.getData('text/plain'));
                 };
 
                 $scope.openModal = function () {

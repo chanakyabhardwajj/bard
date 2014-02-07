@@ -7,9 +7,10 @@ angular.module('bard.Articles').controller('NewArticleController', ['$scope', '$
     $scope.contentError = false;
     $scope.windowMessage = '';
 
+
     $scope.pasted = function($event){
-        $event.target.innerText = $event.target.innerText + $event.originalEvent.clipboardData.getData('text/plain');
         $event.originalEvent.preventDefault();
+        document.execCommand('inserttext', false, $event.originalEvent.clipboardData.getData('text/plain'));
     };
 
     $scope.create = function(toPublish) {
